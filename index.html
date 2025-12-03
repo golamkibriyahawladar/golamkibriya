@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golam Kibrya - AI Automation Expert</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .dark {
+            background-color: #111827;
+            color: #f9fafb;
+        }
+
+        .light {
+            background-color: #f9fafb;
+            color: #111827;
+        }
+
+        #network-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .nav-blur {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .smooth-transition {
+            transition: all 0.3s ease;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.02);
+        }
+
+        .hero-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #14b8a6;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .hero-image {
+                width: 250px;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body class="dark">
+    <canvas id="network-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 smooth-transition nav-blur border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="font-bold text-xl text-teal-500">GOLAM KIBRYA</div>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link hover:text-teal-500 smooth-transition cursor-pointer">Home</a>
+                    <a href="#projects"
+                        class="nav-link hover:text-teal-500 smooth-transition cursor-pointer">Projects</a>
+                    <a href="#reviews" class="nav-link hover:text-teal-500 smooth-transition cursor-pointer">Reviews</a>
+                    <a href="#contact" class="nav-link hover:text-teal-500 smooth-transition cursor-pointer">Contact
+                        Me</a>
+                    <button
+                        class="bg-teal-500 text-white px-6 py-2 rounded-lg hover:bg-teal-600 smooth-transition font-semibold">
+                        HIRE ME
+                    </button>
+                    <button id="theme-toggle" class="p-2 rounded-lg hover:bg-gray-800 smooth-transition">
+                        <svg id="sun-icon" class="hidden w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+                            </path>
+                        </svg>
+                        <svg id="moon-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+
+                <button id="mobile-menu-btn" class="md:hidden p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden border-t">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#home" class="block py-2 hover:text-teal-500 smooth-transition">Home</a>
+                <a href="#projects" class="block py-2 hover:text-teal-500 smooth-transition">Projects</a>
+                <a href="#reviews" class="block py-2 hover:text-teal-500 smooth-transition">Reviews</a>
+                <a href="#contact" class="block py-2 hover:text-teal-500 smooth-transition">Contact Me</a>
+                <button
+                    class="w-full bg-teal-500 text-white px-6 py-2 rounded-lg hover:bg-teal-600 smooth-transition font-semibold">
+                    HIRE ME
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center justify-center pt-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6 fade-in">
+                        <div class="inline-block">
+                            <span class="text-teal-500 font-semibold text-sm tracking-wider uppercase">AI Automation
+                                Specialist</span>
+                        </div>
+                        <h1 class="text-5xl md:text-6xl font-bold leading-tight">
+                            Transform Your Business with
+                            <span class="text-teal-500"> Intelligent Automation</span>
+                        </h1>
+                        <p class="text-xl opacity-80">
+                            Expert in n8n, API Integration and automation. I help businesses save
+                            time, reduce costs, and scale efficiently through cutting-edge AI solutions.
+                            <br> <br>
+                            Let's kill your boring task
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-4 py-2 rounded-full text-sm font-medium border skill-badge">n8n
+                                Expert</span>
+                            <span class="px-4 py-2 rounded-full text-sm font-medium border skill-badge">API
+                                Integration</span>
+                            <span class="px-4 py-2 rounded-full text-sm font-medium border skill-badge"> Lang
+                                Flow</span>
+                            <span class="px-4 py-2 rounded-full text-sm font-medium border skill-badge">zapier </span>
+                            <span class="px-4 py-2 rounded-full text-sm font-medium border skill-badge">Zoho CRM</span>
+                        </div>
+                        <button
+                            class="bg-teal-500 text-white px-8 py-4 rounded-lg hover:bg-teal-600 smooth-transition font-semibold text-lg inline-flex items-center space-x-2 shadow-lg hover-scale">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                            <span>Book a Discovery Call</span>
+                        </button>
+                    </div>
+                    <div class="flex justify-center fade-in">
+                        <div class="relative ">
+                            <div
+                                class="hero-image flex items-center justify-center text-6xl font-bold bg-gradient-to-br from-teal-500 to-teal-700 text-white ">
+                                <img src="./image/Gemini_Generated_Image_603q6f603q6f603q-removebg-preview.png" alt="">
+                            </div>
+                            <div
+                                class="absolute -bottom-4 -right-4 bg-teal-500 text-white px-6 py-3 rounded-lg font-semibold shadow-xl">
+                                Available for Hire
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4">Featured Projects</h2>
+                    <p class="text-xl opacity-80">Real-world automation solutions delivering measurable results</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8" id="projects-container"></div>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section id="reviews" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4">Client Testimonials</h2>
+                    <p class="text-xl opacity-80">What clients say about working with me</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8" id="reviews-container"></div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="contact-card rounded-xl p-12 border text-center">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">Let's Build Something Amazing</h2>
+                    <p class="text-xl mb-8 opacity-80">
+                        Ready to automate your business and unlock new levels of efficiency? Let's discuss your project.
+                    </p>
+
+                    <div class="flex flex-wrap justify-center gap-4 mb-8">
+                        <a href="golamkibriyahawladar@gmail.com
+" class="contact-btn flex items-center space-x-2 px-6 py-3 rounded-lg smooth-transition">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                            <span>Email Me</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/golam-kibriya-hawladar/" target="_blank"
+                            class="contact-btn flex items-center space-x-2 px-6 py-3 rounded-lg smooth-transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://github.com/golam-kibriya123" target="_blank"
+                            class="contact-btn flex items-center space-x-2 px-6 py-3 rounded-lg smooth-transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                            </svg>
+                            <span>GitHub</span>
+                        </a>
+                    </div>
+
+                    <button
+                        class="bg-teal-500 text-white px-10 py-4 rounded-lg hover:bg-teal-600 smooth-transition font-semibold text-lg shadow-lg hover-scale">
+                        Schedule a Free Consultation
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="border-t py-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center opacity-70">
+                    <p>© 2025 Golam Kibrya. All rights reserved</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Projects Data
+        const projects = [
+            {
+                title: "All In One",
+                image: "./image/project/allinOne.png",
+                challenge: "This was an actual project for a client. I developed a custom workflow because they were struggling with massive data in their sheet. They had to manually generate content from the data, download and edit images from links, re-upload them, and update the sheet with new URLs. Handling all this data manually was very time-consuming and exhausting.",
+                solution: "I have designed this AI workflow as ‘all-in-one.’ It will fetch data from a sheet, analyze the data, write descriptions, edit images based on user queries, back up the images, and finally compile all the processed data back into a sheet.",
+                metrics: ["87% faster processing", "Daily Time save"],
+                tech: ["n8n", "telegram", "Drive", "sheet",]
+            },
+            {
+                title: "Auto blog publisher",
+                image: "./image/project/blog.png",
+                challenge: "From our observation, bloggers often hire dedicated content writers to produce articles, which they then publish manually",
+                solution: "Based on just a single keyword, it will write content, optimize it for SEO, and give it a human-like tone. In some places, it can even write better than a content writer (still under development, not finished yet).",
+                metrics: ["87% faster processing", "95% error reduction", "Daily Time save"],
+                tech: ["n8n", "OpenAI API", "Drive",]
+            },
+            {
+                title: "Project content generator",
+                image: "./image/project/title_genaretor.png",
+                challenge: "When I tried to create my portfolio, I had to write titles and descriptions for all my workflows, which was very tedious for me",
+                solution: "Later, I created a tool for myself that analyzes my workflows and generates a title and description automatically",
+                metrics: ["87% faster processing", "95% error reduction", "Daily Time save"],
+                tech: ["n8n", "OpenAI API", "Drive",]
+            },
+            {
+                title: "Automated Social Media Posting Agent",
+                image: "./image/project/auto_post.png",
+                challenge: "I had to write the post title and content manually, and I had to post it again and again",
+                solution: "This agent automates social media content creation and posting. It generates a post title and description from a provided topic and image URL, downloads the image from the drive, moves it to a “posted” folder, updates a sheet with the backup title, description, and status as “posted,” and finally sends an email notification upon successful completion.",
+
+                metrics: ["87% faster processing", "95% error reduction", "Daily Time save"],
+                tech: ["n8n", "OpenAI API", "Drive",]
+            },
+            {
+                title: "Work flow backup agent",
+                image: "./image/project/workflow_backup.png",
+                challenge: "We normally don’t back up our workflows, which means there’s always a fear that everything could be deleted at any time.",
+                solution: "This agent automatically backs up all workflows to Google Drive at a fixed time every day. It ensures no duplicate projects are created by checking existing backups before saving, maintaining a clean and organized archive of all workflows.",
+                tech: ["n8n", "Sheet", "OpenAI API", "Drive", "Email", "Social media API"],
+
+                metrics: ["87% faster processing", "95% error reduction", "Daily Time save"],
+            },
+            {
+                title: "Resume Optimization Agent",
+                image: "./image/project/resume_optimaizer.png",
+                challenge: "CJob seekers often need to prepare a different CV for every job application, and doing this repeatedly can be quite exhausting.",
+                solution: "This agent receives a job post and a candidate’s resume, optimizes the resume based on the job requirements to improve the candidate’s chances, and emails a detailed PDF report outlining improvement areas and suggestions.",
+
+                metrics: ["96% time reduction", "3x content output", "45% engagement boost"],
+                tech: ["n8n", "Social Media APIs", "Webhook", "Email"]
+            },
+            {
+                title: "Google Maps Lead Generation Agen",
+                image: "./image/project/leadgen.png",
+                challenge: "Manually collecting leads from Google Maps is very time-consuming and requires a lot of effort.",
+                solution: "This agent extracts leads from Google Maps, filters the data to retain only the necessary information, and stores the results in a structured sheet for easy access and management",
+
+                metrics: ["96% time reduction", "3x content output", "45% engagement boost"],
+                tech: ["n8n", "Appify", "sheet", "gemini"]
+            },
+            {
+                title: "Smart AI Model (brain)Selection Agent",
+                image: "./image/project/daynamic_brain.png",
+                challenge: "When we use free AI models, they give poor results whenever we need them to handle heavy or complex tasks. But when we use paid AI, even small tasks end up costing too much money.",
+                solution: "This agent automatically selects the most suitable AI model based on the input data to ensure optimal output quality while minimizing costs.",
+
+                metrics: ["96% time reduction", "3x content output", "45% engagement boost"],
+                tech: ["n8n", "Social Media APIs", "Webhook", "Email"]
+            },
+            {
+                title: "Automated Invoice Generation Agent",
+                image: "./image/project/invoice.png",
+                challenge: "Typically, whenever a product requires an invoice, we have to update it manually and send it via email or other channels. This process is both time-consuming and inconvenient",
+                solution: "This agent triggers upon receiving order details or PDFs, generates an invoice using AI, stores the invoice data in a sheet, and sends the completed invoice via email to the customer",
+
+                metrics: ["96% time reduction", "3x content output", "45% engagement boost"],
+                tech: ["n8n", "Email", "gemini", "sheet"]
+            },
+            {
+                title: "Human In The Loop",
+                image: "./image/project/humaneinloop.png",
+                challenge: "Many tasks cannot be left fully to AI, as this can lead to errors. In such cases, a human-in-the-loop review becomes essential.",
+                solution: "Once the AI agent produces a result, it will pause for human confirmation. Depending on the user’s feedback, it will determine the next step.",
+
+                metrics: ["96% time reduction", "3x content output", "45% engagement boost"],
+                tech: ["n8n", "Social Media APIs", "telegram", "air table", "calender"]
+            },
+
+            {
+                title: "weather report agent",
+                image: "./image/project/weather_update.png",
+                challenge: "We normally don’t receive weather updates directly in our inbox, so we have to look it up in newspapers or search online.",
+                solution: "The AI agent will provide us with the latest weather report at specific intervals, based on the area where we live.",
+
+                metrics: ["96% time reduction", "3x content output", "45% engagement boost"],
+                tech: ["n8n", "Social Media APIs", "Webhook", "Email"]
+            },
+            {
+                title: "Stock agent",
+                image: "./image/project/stock.png",
+                challenge: "Whenever we want information about a company’s stock, we need to look it up on Google.",
+                solution: "Based on our query, the AI agent can provide the latest stock updates for any company.",
+
+                metrics: ["96% time reduction", "3x content output", "45% engagement boost"],
+                tech: ["n8n", "Social Media APIs", "Webhook", "Email"]
+            },
+
+
+        ];
+
+        // Reviews Data
+        const reviews = [
+            {
+                name: "Sarah Mitchell",
+                role: "Operations Director, TechFlow Inc",
+                review: "Golam transformed our chaotic workflow into a seamless automation system. The n8n solutions he built saved us countless hours and significantly reduced errors.",
+                rating: 5
+            },
+            {
+                name: "Marcus Chen",
+                role: "CEO, DataSync Solutions",
+                review: "Outstanding expertise in AI automation. The lead qualification system Golam built increased our conversion rates dramatically. Highly recommended!",
+                rating: 5
+            },
+            {
+                name: "Emily Rodriguez",
+                role: "Marketing Manager, GrowthLab",
+                review: "Professional, responsive, and incredibly skilled. Golam's automation solutions have been game-changing for our content distribution strategy.",
+                rating: 5
+            }
+        ];
+
+        // Theme Management
+        let isDark = true;
+        const body = document.body;
+        const themeToggle = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+
+        function updateTheme() {
+            if (isDark) {
+                body.classList.add('dark');
+                body.classList.remove('light');
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+                document.getElementById('navbar').style.background = 'rgba(17, 24, 39, 0.95)';
+                document.getElementById('navbar').style.borderColor = '#1f2937';
+            } else {
+                body.classList.add('light');
+                body.classList.remove('dark');
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+                document.getElementById('navbar').style.background = 'rgba(255, 255, 255, 0.95)';
+                document.getElementById('navbar').style.borderColor = '#e5e7eb';
+            }
+            updateProjectCards();
+            updateReviewCards();
+            updateContactCard();
+            updateSkillBadges();
+        }
+
+        themeToggle.addEventListener('click', () => {
+            isDark = !isDark;
+            updateTheme();
+        });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Render Projects
+        function updateProjectCards() {
+            const container = document.getElementById('projects-container');
+            container.innerHTML = projects.map(project => `
+        <div class="project-card rounded-xl p-8 border hover:border-teal-500 smooth-transition hover-scale" style="background: ${isDark ? 'rgba(31, 41, 55, 0.5)' : 'rgba(255, 255, 255, 1)'}; border-color: ${isDark ? '#374151' : '#e5e7eb'};">
+          <img src="${project.image}" alt="${project.title}" class="project-image">
+          <h3 class="text-2xl font-bold mb-4 text-teal-500">${project.title}</h3>
+          
+          <div class="grid md:grid-cols-1 gap-6 mb-6">
+            <div>
+              <h4 class="font-semibold mb-2 text-sm uppercase tracking-wider opacity-70">Challenge :</h4>
+              <p class="${isDark ? 'text-gray-300' : 'text-gray-700'}">${project.challenge}</p>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-2 text-sm uppercase tracking-wider opacity-70">Solution :</h4>
+              <p class="${isDark ? 'text-gray-300' : 'text-gray-700'}">${project.solution}</p>
+            </div>
+           
+          </div>
+
+          <div class="flex flex-wrap gap-4 mb-4">
+            ${project.metrics.map(metric => `
+              <div class="bg-teal-500 bg-opacity-10 text-teal-500 px-4 py-2 rounded-lg font-semibold">
+                ${metric}
+              </div>
+            `).join('')}
+          </div>
+
+          <div class="flex flex-wrap gap-2">
+            ${project.tech.map(tech => `
+              <span class="px-3 py-1 rounded-full text-xs font-medium" style="background: ${isDark ? '#374151' : '#f3f4f6'}; color: ${isDark ? '#d1d5db' : '#374151'};">
+                ${tech}
+              </span>
+            `).join('')}
+          </div>
+        </div>
+      `).join('');
+        }
+
+        // Render Reviews
+        function updateReviewCards() {
+            const container = document.getElementById('reviews-container');
+            container.innerHTML = reviews.map(review => `
+        <div class="review-card rounded-xl p-6 border hover:border-teal-500 smooth-transition" style="background: ${isDark ? 'rgba(31, 41, 55, 0.5)' : 'rgba(255, 255, 255, 1)'}; border-color: ${isDark ? '#374151' : '#e5e7eb'};">
+          <div class="flex mb-4">
+            ${'<span class="text-teal-500 text-xl">★</span>'.repeat(review.rating)}
+          </div>
+          <p class="mb-6 italic ${isDark ? 'text-gray-300' : 'text-gray-700'}">"${review.review}"</p>
+          <div>
+            <p class="font-semibold">${review.name}</p>
+            <p class="text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}">${review.role}</p>
+          </div>
+        </div>
+      `).join('');
+        }
+
+        // Update Contact Card
+        function updateContactCard() {
+            const card = document.querySelector('.contact-card');
+            card.style.background = isDark ? 'rgba(31, 41, 55, 0.5)' : 'rgba(255, 255, 255, 1)';
+            card.style.borderColor = isDark ? '#374151' : '#e5e7eb';
+
+            document.querySelectorAll('.contact-btn').forEach(btn => {
+                btn.style.background = isDark ? '#374151' : '#f3f4f6';
+            });
+        }
+
+        // Update Skill Badges
+        function updateSkillBadges() {
+            document.querySelectorAll('.skill-badge').forEach(badge => {
+                badge.style.background = isDark ? '#1f2937' : '#ffffff';
+                badge.style.borderColor = isDark ? '#374151' : '#e5e7eb';
+            });
+        }
+
+        // 3D Network Animation
+        const canvas = document.getElementById('network-canvas');
+        const ctx = canvas.getContext('2d');
+        let scrollY = 0;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        window.addEventListener('scroll', () => {
+            scrollY = window.scrollY;
+        });
+
+        const nodes = [];
+        const nodeCount = 40;
+
+        for (let i = 0; i < nodeCount; i++) {
+            nodes.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.3,
+                vy: (Math.random() - 0.5) * 0.3,
+                radius: Math.random() * 3 + 2
+            });
+        }
+
+        function animate() {
+            ctx.fillStyle = isDark ? 'rgba(17, 24, 39, 0.1)' : 'rgba(249, 250, 251, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            const cameraOffset = scrollY * 0.05;
+
+            nodes.forEach((node, i) => {
+                node.x += node.vx;
+                node.y += node.vy;
+
+                if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
+                if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(node.x, node.y - cameraOffset, node.radius, 0, Math.PI * 2);
+                ctx.fillStyle = isDark ? 'rgba(20, 184, 166, 0.6)' : 'rgba(20, 184, 166, 0.5)';
+                ctx.fill();
+
+                nodes.slice(i + 1).forEach(other => {
+                    const dx = other.x - node.x;
+                    const dy = other.y - node.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 150) {
+                        ctx.beginPath();
+                        ctx.moveTo(node.x, node.y - cameraOffset);
+                        ctx.lineTo(other.x, other.y - cameraOffset);
+                        ctx.strokeStyle = isDark
+                            ? `rgba(20, 184, 166, ${0.2 * (1 - dist / 150)})`
+                            : `rgba(20, 184, 166, ${0.15 * (1 - dist / 150)})`;
+                        ctx.lineWidth = 1;
+                        ctx.stroke();
+                    }
+                });
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        // Initialize
+        updateTheme();
+        updateProjectCards();
+        updateReviewCards();
+        animate();
+    </script>
+</body>
+
+</html>
