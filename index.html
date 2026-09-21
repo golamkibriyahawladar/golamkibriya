@@ -5,10 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Golam Kibriya — AI Automation & Voice Agent Specialist</title>
-    <meta name="description" content="Portfolio of Golam Kibriya - AI Automation Specialist specializing in n8n, Voice AI, CAG/RAG Systems, API integrations, and Autonomous Business Agents.">
+    <meta name="description"
+        content="Portfolio of Golam Kibriya - AI Automation Specialist specializing in n8n, Voice AI, CAG/RAG Systems, API integrations, and Autonomous Business Agents.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -37,7 +40,8 @@
             box-sizing: border-box;
         }
 
-        html, body {
+        html,
+        body {
             overflow-x: clip;
             scroll-behavior: smooth;
         }
@@ -175,8 +179,13 @@
         }
 
         @keyframes flowDown {
-            0% { transform: translateY(-100%); }
-            100% { transform: translateY(100%); }
+            0% {
+                transform: translateY(-100%);
+            }
+
+            100% {
+                transform: translateY(100%);
+            }
         }
 
         /* Pinned Horizontal Carousel Track */
@@ -194,44 +203,60 @@
     <canvas id="network-canvas"></canvas>
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 w-full z-50 smooth-transition nav-blur border-b border-gray-800/80 bg-[#0c111d]/90">
+    <nav id="navbar"
+        class="fixed top-0 w-full z-50 smooth-transition nav-blur border-b border-gray-800/80 bg-[#0c111d]/90">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <a href="#home" class="flex items-center gap-2 font-bold text-xl tracking-tight text-white group">
-                    <span class="h-2.5 w-2.5 rounded-full bg-teal-400 shadow-[0_0_10px_#2dd4bf] group-hover:scale-125 transition-transform"></span>
+                    <span
+                        class="h-2.5 w-2.5 rounded-full bg-teal-400 shadow-[0_0_10px_#2dd4bf] group-hover:scale-125 transition-transform"></span>
                     <span>GOLAM <span class="text-teal-400">KIBRIYA</span></span>
                 </a>
 
                 <div class="hidden md:flex items-center space-x-7">
                     <a href="#home" class="nav-link text-sm font-medium hover:text-teal-400 smooth-transition">Home</a>
-                    <a href="#skills" class="nav-link text-sm font-medium hover:text-teal-400 smooth-transition">Skills</a>
-                    <a href="#projects" class="nav-link text-sm font-medium hover:text-teal-400 smooth-transition">Projects</a>
-                    <a href="#contact" class="nav-link text-sm font-medium hover:text-teal-400 smooth-transition">Contact</a>
-                    
+                    <a href="#skills"
+                        class="nav-link text-sm font-medium hover:text-teal-400 smooth-transition">Skills</a>
+                    <a href="#projects"
+                        class="nav-link text-sm font-medium hover:text-teal-400 smooth-transition">Projects</a>
+                    <a href="#contact"
+                        class="nav-link text-sm font-medium hover:text-teal-400 smooth-transition">Contact</a>
+
                     <!-- Direct Mailto Hire Me Button -->
-                    <a href="mailto:golamkibriyahawladar@gmail.com?subject=Inquiry%20Regarding%20AI%20Automation%20Project&body=Hi%20Golam,%0D%0A%0D%0AI%20would%20like%20to%20hire%20you%20for%20an%20automation%20project.%20Here%20are%20the%20details:%0D%0A%0D%0A"
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=golamkibriyahawladar@gmail.com&su=Inquiry%20Regarding%20AI%20Automation%20Project&body=Hi%20Golam,%0D%0A%0D%0AI%20would%20like%20to%20hire%20you%20for%20an%20automation%20project.%20Here%20are%20the%20details:%0D%0A%0D%0A"
+                        target="_blank" rel="noopener noreferrer"
+                        onclick="openEmailComposer('Inquiry Regarding AI Automation Project', 'Hi Golam,\n\nI would like to hire you for an automation project. Here are the details:\n\n');"
                         class="bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-400 hover:to-teal-500 text-white px-5 py-2 rounded-lg smooth-transition font-semibold text-sm shadow-md hover:shadow-teal-500/20 active:scale-95 inline-flex items-center gap-1.5">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
                         </svg>
                         <span>HIRE ME</span>
                     </a>
 
                     <!-- Theme Toggle -->
-                    <button id="theme-toggle" aria-label="Toggle Theme" class="p-2 rounded-lg hover:bg-gray-800/60 text-gray-300 hover:text-white smooth-transition">
+                    <button id="theme-toggle" aria-label="Toggle Theme"
+                        class="p-2 rounded-lg hover:bg-gray-800/60 text-gray-300 hover:text-white smooth-transition">
                         <svg id="sun-icon" class="hidden w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+                            </path>
                         </svg>
                         <svg id="moon-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
+                            </path>
                         </svg>
                     </button>
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" aria-label="Open Navigation Menu" class="md:hidden p-2 text-gray-300 hover:text-white">
+                <button id="mobile-menu-btn" aria-label="Open Navigation Menu"
+                    class="md:hidden p-2 text-gray-300 hover:text-white">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
             </div>
@@ -241,10 +266,15 @@
         <div id="mobile-menu" class="hidden md:hidden border-t border-gray-800 bg-[#0c111d]/95 backdrop-blur-xl">
             <div class="px-4 py-4 space-y-3">
                 <a href="#home" class="block py-2 text-sm font-medium hover:text-teal-400 smooth-transition">Home</a>
-                <a href="#skills" class="block py-2 text-sm font-medium hover:text-teal-400 smooth-transition">Skills</a>
-                <a href="#projects" class="block py-2 text-sm font-medium hover:text-teal-400 smooth-transition">Projects</a>
-                <a href="#contact" class="block py-2 text-sm font-medium hover:text-teal-400 smooth-transition">Contact</a>
-                <a href="mailto:golamkibriyahawladar@gmail.com?subject=Inquiry%20Regarding%20AI%20Automation%20Project"
+                <a href="#skills"
+                    class="block py-2 text-sm font-medium hover:text-teal-400 smooth-transition">Skills</a>
+                <a href="#projects"
+                    class="block py-2 text-sm font-medium hover:text-teal-400 smooth-transition">Projects</a>
+                <a href="#contact"
+                    class="block py-2 text-sm font-medium hover:text-teal-400 smooth-transition">Contact</a>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=golamkibriyahawladar@gmail.com&su=Inquiry%20Regarding%20AI%20Automation%20Project"
+                    target="_blank" rel="noopener noreferrer"
+                    onclick="openEmailComposer('Inquiry Regarding AI Automation Project', 'Hi Golam,\n\nI would like to hire you for an automation project.\n\n');"
                     class="block w-full text-center bg-teal-500 hover:bg-teal-600 text-white px-6 py-2.5 rounded-lg smooth-transition font-semibold text-sm">
                     HIRE ME
                 </a>
@@ -257,41 +287,62 @@
         <section id="home" class="min-h-screen flex items-center justify-center pt-24 pb-16">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
                 <div class="grid lg:grid-cols-12 gap-12 items-center">
-                    
+
                     <!-- Left Hero Content -->
                     <div class="lg:col-span-7 space-y-6">
-                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-teal-500/30 bg-teal-500/10 text-teal-400 text-xs font-mono tracking-wider uppercase">
+                        <div
+                            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-teal-500/30 bg-teal-500/10 text-teal-400 text-xs font-mono tracking-wider uppercase">
                             <span class="h-2 w-2 rounded-full bg-teal-400 animate-pulse"></span>
                             AI & Voice Automation Specialist
                         </div>
-                        
-                        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.15] tracking-tight">
-                            Transform Your Business with 
+
+                        <h1
+                            class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.15] tracking-tight">
+                            Transform Your Business with
                             <br>
-                            <span class="bg-gradient-to-r from-teal-400 via-emerald-300 to-cyan-400 bg-clip-text text-transparent" id="typewriter-text">n8n Automation</span><span class="text-teal-400 animate-pulse font-light">|</span>
+                            <span
+                                class="bg-gradient-to-r from-teal-400 via-emerald-300 to-cyan-400 bg-clip-text text-transparent"
+                                id="typewriter-text">n8n Automation</span><span
+                                class="text-teal-400 animate-pulse font-light">|</span>
                         </h1>
-                        
+
                         <p class="text-lg md:text-xl opacity-80 max-w-2xl leading-relaxed">
-                            Specializing in <span class="text-teal-400 font-semibold">n8n workflows</span>, <span class="text-teal-400 font-semibold">Voice AI (Retell/Vapi)</span>, <span class="text-teal-400 font-semibold">CAG/RAG architectures</span>, and autonomous business operations. 
+                            Specializing in <span class="text-teal-400 font-semibold">n8n workflows</span>, <span
+                                class="text-teal-400 font-semibold">Voice AI (Retell/Vapi)</span>, <span
+                                class="text-teal-400 font-semibold">CAG/RAG architectures</span>, and autonomous
+                            business operations.
                             <br class="hidden sm:inline">
-                            I eliminate repetitive manual tasks, slash operational costs, and build reliable 24/7 AI pipelines.
+                            I eliminate repetitive manual tasks, slash operational costs, and build reliable 24/7 AI
+                            pipelines.
                         </p>
 
                         <!-- Skill Quick Tags -->
                         <div class="flex flex-wrap gap-2 pt-1 font-mono text-xs">
-                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/50 text-gray-300">n8n Expert</span>
-                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/50 text-gray-300">CAG & RAG Systems</span>
-                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/50 text-gray-300">Voice AI (Retell / Vapi)</span>
-                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/50 text-gray-300">Zoho CRM & GHL</span>
-                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/50 text-gray-300">Webhooks & API Sync</span>
+                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/50 text-gray-300">n8n
+                                Expert</span>
+                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/50 text-gray-300">CAG
+                                & RAG Systems</span>
+                            <span
+                                class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/50 text-gray-300">Voice
+                                AI (Retell / Vapi)</span>
+                            <span
+                                class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/50 text-gray-300">Zoho
+                                CRM & GHL</span>
+                            <span
+                                class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/50 text-gray-300">Webhooks
+                                & API Sync</span>
                         </div>
 
                         <!-- CTA Actions -->
                         <div class="flex flex-wrap items-center gap-4 pt-3">
-                            <a href="mailto:golamkibriyahawladar@gmail.com?subject=Book%20a%20Discovery%20Call%20-%20AI%20Automation&body=Hi%20Golam,%0D%0A%0D%0AI%20would%20like%20to%20schedule%20a%20discovery%20call%20to%20discuss%20our%20automation%20needs.%0D%0A%0D%0A"
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=golamkibriyahawladar@gmail.com&su=Book%20a%20Discovery%20Call%20-%20AI%20Automation&body=Hi%20Golam,%0D%0A%0D%0AI%20would%20like%20to%20schedule%20a%20discovery%20call%20to%20discuss%20our%20automation%20needs.%0D%0A%0D%0A"
+                                target="_blank" rel="noopener noreferrer"
+                                onclick="openEmailComposer('Book a Discovery Call - AI Automation', 'Hi Golam,\n\nI would like to schedule a discovery call to discuss our automation needs.\n\n');"
                                 class="bg-teal-500 hover:bg-teal-600 text-white px-7 py-3.5 rounded-xl smooth-transition font-semibold text-base inline-flex items-center gap-2 shadow-lg shadow-teal-500/20 active:scale-95 hover:translate-y-[-2px]">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                    </path>
                                 </svg>
                                 <span>Book a Discovery Call</span>
                             </a>
@@ -299,7 +350,8 @@
                                 class="border border-gray-700 hover:border-teal-500/60 bg-gray-800/40 hover:bg-gray-800/80 px-6 py-3.5 rounded-xl smooth-transition font-medium text-base inline-flex items-center gap-2 hover:translate-y-[-2px]">
                                 <span>Explore Workflows</span>
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
                                 </svg>
                             </a>
                         </div>
@@ -307,7 +359,8 @@
 
                     <!-- Right Hero Visual: Live Automation Pipeline Terminal with Active Node Cycle -->
                     <div class="lg:col-span-5 w-full">
-                        <div class="glass-card rounded-2xl p-6 relative overflow-hidden border border-teal-500/30 glow-teal">
+                        <div
+                            class="glass-card rounded-2xl p-6 relative overflow-hidden border border-teal-500/30 glow-teal">
                             <!-- Terminal Header -->
                             <div class="flex items-center justify-between border-b border-gray-800 pb-4 mb-5">
                                 <div class="flex items-center gap-2">
@@ -316,7 +369,8 @@
                                     <span class="h-3 w-3 rounded-full bg-green-500/80"></span>
                                     <span class="font-mono text-xs text-gray-400 ml-2">n8n-pipeline-core.io</span>
                                 </div>
-                                <span class="inline-flex items-center gap-1.5 font-mono text-[11px] text-teal-400 bg-teal-500/10 px-2.5 py-0.5 rounded-full border border-teal-500/20">
+                                <span
+                                    class="inline-flex items-center gap-1.5 font-mono text-[11px] text-teal-400 bg-teal-500/10 px-2.5 py-0.5 rounded-full border border-teal-500/20">
                                     <span class="h-1.5 w-1.5 rounded-full bg-teal-400 animate-ping"></span>
                                     LIVE ENGINE
                                 </span>
@@ -325,82 +379,103 @@
                             <!-- Interactive Workflow Pipeline Nodes with Live Animation -->
                             <div class="space-y-3 font-mono text-xs" id="pipeline-container">
                                 <!-- Node 1 -->
-                                <div id="pnode-1" class="pipeline-node flex items-center gap-3 p-3 rounded-xl bg-gray-800/60 border border-gray-700/60 transition-all duration-300">
-                                    <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-teal-500/20 text-teal-400">
+                                <div id="pnode-1"
+                                    class="pipeline-node flex items-center gap-3 p-3 rounded-xl bg-gray-800/60 border border-gray-700/60 transition-all duration-300">
+                                    <div
+                                        class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-teal-500/20 text-teal-400">
                                         ⚡
                                     </div>
                                     <div class="flex-1 min-w-0">
                                         <div class="flex justify-between items-center">
                                             <span class="font-semibold text-gray-200">Webhook / Inbound Trigger</span>
-                                            <span class="text-[10px] text-teal-400 font-bold" id="node-status-1">200 OK</span>
+                                            <span class="text-[10px] text-teal-400 font-bold" id="node-status-1">200
+                                                OK</span>
                                         </div>
-                                        <p class="text-[11px] text-gray-400 truncate">Facebook • Telegram • REST Webhook</p>
+                                        <p class="text-[11px] text-gray-400 truncate">Facebook • Telegram • REST Webhook
+                                        </p>
                                     </div>
                                 </div>
 
                                 <!-- Connector Line -->
                                 <div class="flex justify-center -my-1">
-                                    <div class="data-stream w-0.5 h-4 bg-gradient-to-b from-teal-500 to-indigo-500"></div>
+                                    <div class="data-stream w-0.5 h-4 bg-gradient-to-b from-teal-500 to-indigo-500">
+                                    </div>
                                 </div>
 
                                 <!-- Node 2 -->
-                                <div id="pnode-2" class="pipeline-node flex items-center gap-3 p-3 rounded-xl bg-gray-800/60 border border-indigo-500/40 transition-all duration-300">
-                                    <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-indigo-500/20 text-indigo-400">
+                                <div id="pnode-2"
+                                    class="pipeline-node flex items-center gap-3 p-3 rounded-xl bg-gray-800/60 border border-indigo-500/40 transition-all duration-300">
+                                    <div
+                                        class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-indigo-500/20 text-indigo-400">
                                         🧠
                                     </div>
                                     <div class="flex-1 min-w-0">
                                         <div class="flex justify-between items-center">
                                             <span class="font-semibold text-gray-200">AI Intelligence Core</span>
-                                            <span class="text-[10px] text-indigo-400 font-bold" id="node-status-2">Gemini 3.5</span>
+                                            <span class="text-[10px] text-indigo-400 font-bold"
+                                                id="node-status-2">Gemini 3.5</span>
                                         </div>
-                                        <p class="text-[11px] text-gray-400 truncate">Voice Transcription + 5-Step Funnel Agent</p>
+                                        <p class="text-[11px] text-gray-400 truncate">Voice Transcription + 5-Step
+                                            Funnel Agent</p>
                                     </div>
                                 </div>
 
                                 <!-- Connector Line -->
                                 <div class="flex justify-center -my-1">
-                                    <div class="data-stream w-0.5 h-4 bg-gradient-to-b from-indigo-500 to-sky-500"></div>
+                                    <div class="data-stream w-0.5 h-4 bg-gradient-to-b from-indigo-500 to-sky-500">
+                                    </div>
                                 </div>
 
                                 <!-- Node 3 -->
-                                <div id="pnode-3" class="pipeline-node flex items-center gap-3 p-3 rounded-xl bg-gray-800/60 border border-sky-500/40 transition-all duration-300">
-                                    <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-sky-500/20 text-sky-400">
+                                <div id="pnode-3"
+                                    class="pipeline-node flex items-center gap-3 p-3 rounded-xl bg-gray-800/60 border border-sky-500/40 transition-all duration-300">
+                                    <div
+                                        class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-sky-500/20 text-sky-400">
                                         🗄️
                                     </div>
                                     <div class="flex-1 min-w-0">
                                         <div class="flex justify-between items-center">
                                             <span class="font-semibold text-gray-200">CAG / Vector Store Cache</span>
-                                            <span class="text-[10px] text-sky-400 font-bold" id="node-status-3">Token Hit</span>
+                                            <span class="text-[10px] text-sky-400 font-bold" id="node-status-3">Token
+                                                Hit</span>
                                         </div>
-                                        <p class="text-[11px] text-gray-400 truncate">Gemini Files API + Postgres / Vector DB</p>
+                                        <p class="text-[11px] text-gray-400 truncate">Gemini Files API + Postgres /
+                                            Vector DB</p>
                                     </div>
                                 </div>
 
                                 <!-- Connector Line -->
                                 <div class="flex justify-center -my-1">
-                                    <div class="data-stream w-0.5 h-4 bg-gradient-to-b from-sky-500 to-emerald-500"></div>
+                                    <div class="data-stream w-0.5 h-4 bg-gradient-to-b from-sky-500 to-emerald-500">
+                                    </div>
                                 </div>
 
                                 <!-- Node 4 -->
-                                <div id="pnode-4" class="pipeline-node flex items-center gap-3 p-3 rounded-xl bg-gray-800/60 border border-emerald-500/40 transition-all duration-300">
-                                    <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-emerald-500/20 text-emerald-400">
+                                <div id="pnode-4"
+                                    class="pipeline-node flex items-center gap-3 p-3 rounded-xl bg-gray-800/60 border border-emerald-500/40 transition-all duration-300">
+                                    <div
+                                        class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-emerald-500/20 text-emerald-400">
                                         🚀
                                     </div>
                                     <div class="flex-1 min-w-0">
                                         <div class="flex justify-between items-center">
                                             <span class="font-semibold text-gray-200">CRM & Business Action</span>
-                                            <span class="text-[10px] text-emerald-400 font-bold" id="node-status-4">Executed</span>
+                                            <span class="text-[10px] text-emerald-400 font-bold"
+                                                id="node-status-4">Executed</span>
                                         </div>
-                                        <p class="text-[11px] text-gray-400 truncate">Lead Saved • Zoho / GHL • Invoice Dispatched</p>
+                                        <p class="text-[11px] text-gray-400 truncate">Lead Saved • Zoho / GHL • Invoice
+                                            Dispatched</p>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Live Stat Footer with Real-time Count-up -->
-                            <div class="mt-5 pt-4 border-t border-gray-800/80 flex items-center justify-between text-[11px] font-mono text-gray-400">
+                            <div
+                                class="mt-5 pt-4 border-t border-gray-800/80 flex items-center justify-between text-[11px] font-mono text-gray-400">
                                 <span class="flex items-center gap-1.5">
                                     <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                                    <span>Processed: <strong id="processed-counter" class="text-teal-400">1,482</strong> items</span>
+                                    <span>Processed: <strong id="processed-counter" class="text-teal-400">1,482</strong>
+                                        items</span>
                                 </span>
                                 <span>Latency: <strong class="text-teal-400">1.2s</strong></span>
                             </div>
@@ -414,7 +489,9 @@
         <section id="skills" class="py-20 border-t border-gray-800/60">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16 reveal-on-scroll">
-                    <span class="text-teal-400 font-mono text-xs tracking-widest uppercase mb-2 inline-block">Architecture & Tools</span>
+                    <span
+                        class="text-teal-400 font-mono text-xs tracking-widest uppercase mb-2 inline-block">Architecture
+                        & Tools</span>
                     <h2 class="text-3xl md:text-5xl font-bold tracking-tight">Core Technical Stack</h2>
                     <p class="text-lg opacity-80 max-w-2xl mx-auto mt-3">
                         Battle-tested tools and frameworks used to engineer resilient, high-speed automation workflows.
@@ -432,14 +509,20 @@
                             </div>
                         </div>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1.5 rounded-lg border border-teal-500/30 bg-teal-500/10 text-teal-300 text-xs font-semibold">n8n Expert</span>
-                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/60 text-gray-200 text-xs font-medium">API & Webhook Integration</span>
-                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/60 text-gray-200 text-xs font-medium">Zapier</span>
+                            <span
+                                class="px-3 py-1.5 rounded-lg border border-teal-500/30 bg-teal-500/10 text-teal-300 text-xs font-semibold">n8n
+                                Expert</span>
+                            <span
+                                class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/60 text-gray-200 text-xs font-medium">API
+                                & Webhook Integration</span>
+                            <span
+                                class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/60 text-gray-200 text-xs font-medium">Zapier</span>
                         </div>
                     </div>
 
                     <!-- Category 2: AI & LLM Systems -->
-                    <div class="glass-card hover-tilt rounded-2xl p-6 border hover:border-indigo-500/50 reveal-on-scroll">
+                    <div
+                        class="glass-card hover-tilt rounded-2xl p-6 border hover:border-indigo-500/50 reveal-on-scroll">
                         <div class="flex items-center gap-3 mb-4">
                             <div class="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400 text-xl">🧠</div>
                             <div>
@@ -448,10 +531,16 @@
                             </div>
                         </div>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1.5 rounded-lg border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 text-xs font-semibold">LangFlow</span>
-                            <span class="px-3 py-1.5 rounded-lg border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 text-xs font-semibold">LangChain</span>
-                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/60 text-gray-200 text-xs font-medium">RAG (Retrieval-Augmented)</span>
-                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/60 text-gray-200 text-xs font-medium">CAG (Cache-Augmented)</span>
+                            <span
+                                class="px-3 py-1.5 rounded-lg border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 text-xs font-semibold">LangFlow</span>
+                            <span
+                                class="px-3 py-1.5 rounded-lg border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 text-xs font-semibold">LangChain</span>
+                            <span
+                                class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/60 text-gray-200 text-xs font-medium">RAG
+                                (Retrieval-Augmented)</span>
+                            <span
+                                class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/60 text-gray-200 text-xs font-medium">CAG
+                                (Cache-Augmented)</span>
                         </div>
                     </div>
 
@@ -465,15 +554,22 @@
                             </div>
                         </div>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1.5 rounded-lg border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 text-xs font-semibold">Retell AI</span>
-                            <span class="px-3 py-1.5 rounded-lg border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 text-xs font-semibold">Vapi</span>
-                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/60 text-gray-200 text-xs font-medium">ElevenLabs</span>
-                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/60 text-gray-200 text-xs font-medium">Twilio Telephony</span>
+                            <span
+                                class="px-3 py-1.5 rounded-lg border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 text-xs font-semibold">Retell
+                                AI</span>
+                            <span
+                                class="px-3 py-1.5 rounded-lg border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 text-xs font-semibold">Vapi</span>
+                            <span
+                                class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/60 text-gray-200 text-xs font-medium">ElevenLabs</span>
+                            <span
+                                class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/60 text-gray-200 text-xs font-medium">Twilio
+                                Telephony</span>
                         </div>
                     </div>
 
                     <!-- Category 4: CRM & Business Platforms -->
-                    <div class="glass-card hover-tilt rounded-2xl p-6 border hover:border-emerald-500/50 reveal-on-scroll">
+                    <div
+                        class="glass-card hover-tilt rounded-2xl p-6 border hover:border-emerald-500/50 reveal-on-scroll">
                         <div class="flex items-center gap-3 mb-4">
                             <div class="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 text-xl">📊</div>
                             <div>
@@ -482,14 +578,21 @@
                             </div>
                         </div>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1.5 rounded-lg border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-xs font-semibold">Zoho CRM</span>
-                            <span class="px-3 py-1.5 rounded-lg border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-xs font-semibold">GoHighLevel (GHL)</span>
-                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/60 text-gray-200 text-xs font-medium">Google Workspace & Sheets</span>
+                            <span
+                                class="px-3 py-1.5 rounded-lg border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-xs font-semibold">Zoho
+                                CRM</span>
+                            <span
+                                class="px-3 py-1.5 rounded-lg border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-xs font-semibold">GoHighLevel
+                                (GHL)</span>
+                            <span
+                                class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/60 text-gray-200 text-xs font-medium">Google
+                                Workspace & Sheets</span>
                         </div>
                     </div>
 
                     <!-- Category 5: Web & Frontend -->
-                    <div class="glass-card hover-tilt rounded-2xl p-6 border hover:border-amber-500/50 reveal-on-scroll">
+                    <div
+                        class="glass-card hover-tilt rounded-2xl p-6 border hover:border-amber-500/50 reveal-on-scroll">
                         <div class="flex items-center gap-3 mb-4">
                             <div class="p-2.5 rounded-xl bg-amber-500/10 text-amber-400 text-xl">🌐</div>
                             <div>
@@ -498,15 +601,20 @@
                             </div>
                         </div>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1.5 rounded-lg border border-amber-500/30 bg-amber-500/10 text-amber-300 text-xs font-semibold">HTML5</span>
-                            <span class="px-3 py-1.5 rounded-lg border border-amber-500/30 bg-amber-500/10 text-amber-300 text-xs font-semibold">CSS3</span>
-                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/60 text-gray-200 text-xs font-medium">JavaScript</span>
-                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/60 text-gray-200 text-xs font-medium">WordPress</span>
+                            <span
+                                class="px-3 py-1.5 rounded-lg border border-amber-500/30 bg-amber-500/10 text-amber-300 text-xs font-semibold">HTML5</span>
+                            <span
+                                class="px-3 py-1.5 rounded-lg border border-amber-500/30 bg-amber-500/10 text-amber-300 text-xs font-semibold">CSS3</span>
+                            <span
+                                class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/60 text-gray-200 text-xs font-medium">JavaScript</span>
+                            <span
+                                class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/60 text-gray-200 text-xs font-medium">WordPress</span>
                         </div>
                     </div>
 
                     <!-- Category 6: Databases & Storage -->
-                    <div class="glass-card hover-tilt rounded-2xl p-6 border hover:border-purple-500/50 reveal-on-scroll">
+                    <div
+                        class="glass-card hover-tilt rounded-2xl p-6 border hover:border-purple-500/50 reveal-on-scroll">
                         <div class="flex items-center gap-3 mb-4">
                             <div class="p-2.5 rounded-xl bg-purple-500/10 text-purple-400 text-xl">💾</div>
                             <div>
@@ -515,9 +623,13 @@
                             </div>
                         </div>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1.5 rounded-lg border border-purple-500/30 bg-purple-500/10 text-purple-300 text-xs font-semibold">PostgreSQL</span>
-                            <span class="px-3 py-1.5 rounded-lg border border-purple-500/30 bg-purple-500/10 text-purple-300 text-xs font-semibold">SQL</span>
-                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/60 text-gray-200 text-xs font-medium">Vector Databases</span>
+                            <span
+                                class="px-3 py-1.5 rounded-lg border border-purple-500/30 bg-purple-500/10 text-purple-300 text-xs font-semibold">PostgreSQL</span>
+                            <span
+                                class="px-3 py-1.5 rounded-lg border border-purple-500/30 bg-purple-500/10 text-purple-300 text-xs font-semibold">SQL</span>
+                            <span
+                                class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/60 text-gray-200 text-xs font-medium">Vector
+                                Databases</span>
                         </div>
                     </div>
                 </div>
@@ -532,7 +644,8 @@
                     <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white">
                         Featured Projects &amp; Workflows
                     </h2>
-                    <span class="font-mono text-xs text-teal-400 font-bold bg-teal-500/10 px-3 py-1 rounded-full border border-teal-500/20">
+                    <span
+                        class="font-mono text-xs text-teal-400 font-bold bg-teal-500/10 px-3 py-1 rounded-full border border-teal-500/20">
                         11 Production Workflows
                     </span>
                 </div>
@@ -540,17 +653,19 @@
 
             <!-- Sticky Window (Full Viewport for Cards) -->
             <div class="sticky top-16 flex h-[calc(100vh-64px)] flex-col justify-center overflow-hidden relative">
-                
+
                 <!-- Floating Project Counter -->
                 <div class="absolute top-4 right-6 md:right-12 z-20 pointer-events-none">
-                    <span id="current-project-index" class="font-mono text-xs sm:text-sm text-teal-400 font-bold bg-gray-900/90 backdrop-blur-md px-3.5 py-1 rounded-full border border-teal-500/30 shadow-lg">
+                    <span id="current-project-index"
+                        class="font-mono text-xs sm:text-sm text-teal-400 font-bold bg-gray-900/90 backdrop-blur-md px-3.5 py-1 rounded-full border border-teal-500/30 shadow-lg">
                         Project 01 / 11
                     </span>
                 </div>
 
                 <!-- Horizontal Sliding Track (Moves Right to Left on Scroll) -->
                 <div class="my-auto w-full overflow-hidden flex items-center">
-                    <div id="projects-track" class="flex gap-6 sm:gap-8 px-6 md:px-12 items-stretch h-[540px] max-h-[78vh] min-h-[460px]">
+                    <div id="projects-track"
+                        class="flex gap-6 sm:gap-8 px-6 md:px-12 items-stretch h-[540px] max-h-[78vh] min-h-[460px]">
                         <!-- Project Cards will be dynamically injected here -->
                     </div>
                 </div>
@@ -561,20 +676,26 @@
         <!-- Contact Section -->
         <section id="contact" class="py-20 border-t border-gray-800/60">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="contact-card glass-card hover-tilt rounded-2xl p-8 sm:p-12 border text-center relative overflow-hidden reveal-on-scroll">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-teal-500/30 bg-teal-500/10 text-teal-400 text-xs font-mono mb-4">
+                <div
+                    class="contact-card glass-card hover-tilt rounded-2xl p-8 sm:p-12 border text-center relative overflow-hidden reveal-on-scroll">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-teal-500/30 bg-teal-500/10 text-teal-400 text-xs font-mono mb-4">
                         <span>Get In Touch</span>
                     </div>
 
-                    <h2 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">Let's Build Something Autonomous</h2>
+                    <h2 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">Let's Build Something Autonomous
+                    </h2>
                     <p class="text-lg mb-8 opacity-80 max-w-xl mx-auto leading-relaxed">
-                        Ready to automate boring tasks, integrate cutting-edge LLMs, and streamline your operations? Let's discuss your project today.
+                        Ready to automate boring tasks, integrate cutting-edge LLMs, and streamline your operations?
+                        Let's discuss your project today.
                     </p>
 
                     <!-- Contact Channels -->
                     <div class="flex flex-wrap justify-center gap-4 mb-8">
-                        <!-- Direct Mailto Link -->
-                        <a href="mailto:golamkibriyahawladar@gmail.com?subject=Project%20Inquiry%20-%20AI%20Automation&body=Hi%20Golam,%0D%0A%0D%0AI%20am%20interested%20in%20discussing%20an%20automation%20project.%0D%0A%0D%0ABest%20regards,"
+                        <!-- Direct Email Me Link (Webmail Compose + Mailto Fallback) -->
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=golamkibriyahawladar@gmail.com&su=Project%20Inquiry%20-%20AI%20Automation&body=Hi%20Golam,%0D%0A%0D%0AI%20am%20interested%20in%20discussing%20an%20automation%20project.%0D%0A%0D%0ABest%20regards,"
+                            target="_blank" rel="noopener noreferrer"
+                            onclick="openEmailComposer('Project Inquiry - AI Automation', 'Hi Golam,\n\nI am interested in discussing an automation project.\n\nBest regards,');"
                             class="contact-btn flex items-center space-x-2 px-6 py-3 rounded-xl smooth-transition border border-gray-700 hover:border-teal-500/60 font-medium text-sm hover:translate-y-[-2px]">
                             <svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -584,11 +705,24 @@
                             <span>Email Me</span>
                         </a>
 
+                        <!-- WhatsApp Direct Chat -->
+                        <a href="https://wa.me/880186990857?text=Hi%20Golam,%20I%20am%20interested%20in%20discussing%20an%20automation%20project."
+                            target="_blank" rel="noopener noreferrer"
+                            class="contact-btn flex items-center space-x-2 px-6 py-3 rounded-xl smooth-transition border border-emerald-500/50 bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 hover:border-emerald-400 font-medium text-sm hover:translate-y-[-2px] shadow-sm shadow-emerald-500/10">
+                            <svg class="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                            </svg>
+                            <span>WhatsApp +8801869910857</span>
+                        </a>
+
                         <!-- LinkedIn -->
-                        <a href="https://www.linkedin.com/in/golam-kibriya-hawladar/" target="_blank" rel="noopener noreferrer"
+                        <a href="https://www.linkedin.com/in/golam-kibriya-hawladar/" target="_blank"
+                            rel="noopener noreferrer"
                             class="contact-btn flex items-center space-x-2 px-6 py-3 rounded-xl smooth-transition border border-gray-700 hover:border-teal-500/60 font-medium text-sm hover:translate-y-[-2px]">
                             <svg class="w-5 h-5 text-teal-400" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                             </svg>
                             <span>LinkedIn</span>
                         </a>
@@ -597,14 +731,17 @@
                         <a href="https://github.com/golam-kibriya123" target="_blank" rel="noopener noreferrer"
                             class="contact-btn flex items-center space-x-2 px-6 py-3 rounded-xl smooth-transition border border-gray-700 hover:border-teal-500/60 font-medium text-sm hover:translate-y-[-2px]">
                             <svg class="w-5 h-5 text-teal-400" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                             </svg>
                             <span>GitHub</span>
                         </a>
                     </div>
 
-                    <!-- Direct Mailto Action -->
-                    <a href="mailto:golamkibriyahawladar@gmail.com?subject=Schedule%20a%20Free%20Consultation&body=Hi%20Golam,%0D%0A%0D%0AI%20would%20like%20to%20schedule%20a%20free%20consultation%20regarding%20an%20automation%20workflow.%0D%0A%0D%0ABest%20regards,"
+                    <!-- Direct Action Button (Gmail Web + Mailto Fallback) -->
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=golamkibriyahawladar@gmail.com&su=Schedule%20a%20Free%20Consultation&body=Hi%20Golam,%0D%0A%0D%0AI%20would%20like%20to%20schedule%20a%20free%20consultation%20regarding%20an%20automation%20workflow.%0D%0A%0D%0ABest%20regards,"
+                        target="_blank" rel="noopener noreferrer"
+                        onclick="openEmailComposer('Schedule a Free Consultation', 'Hi Golam,\n\nI would like to schedule a free consultation regarding an automation workflow.\n\nBest regards,');"
                         class="bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-400 hover:to-teal-500 text-white px-8 py-4 rounded-xl smooth-transition font-semibold text-base shadow-lg shadow-teal-500/20 hover:translate-y-[-2px] inline-block active:scale-95">
                         Schedule a Free Consultation
                     </a>
@@ -624,12 +761,34 @@
     </div>
 
     <script>
+        // Universal Email Composer Helper (Direct Gmail Web + Mailto fallback)
+        function openEmailComposer(subject, body) {
+            const email = 'golamkibriyahawladar@gmail.com';
+            const encSubject = encodeURIComponent(subject || 'Inquiry Regarding AI Automation Project');
+            const encBody = encodeURIComponent(body || 'Hi Golam,\n\nI am interested in discussing an automation project.\n\nBest regards,');
+
+            // Direct Gmail Web compose URL
+            const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encSubject}&body=${encBody}`;
+
+            // Attempt background mailto trigger for users with native mail client installed
+            try {
+                const mailtoUrl = `mailto:${email}?subject=${encSubject}&body=${encBody}`;
+                const tempLink = document.createElement('a');
+                tempLink.href = mailtoUrl;
+                tempLink.style.display = 'none';
+                document.body.appendChild(tempLink);
+                tempLink.click();
+                setTimeout(() => tempLink.remove(), 500);
+            } catch (e) {
+                console.warn('Mailto fallback error:', e);
+            }
+        }
+
         // Projects Data with 'All In One' marked as Verified Client Project and others as Showcases
         const projects = [
             {
                 title: "All In One Automation Engine",
                 isClientProject: true,
-                badge: "⭐ Verified Client Project",
                 badgeClass: "border-amber-500/40 bg-amber-500/10 text-amber-300",
                 image: "./image/project/allinOne.png",
                 challenge: "An actual client project: The client was overwhelmed with massive spreadsheet data, manually generating descriptions, downloading and editing linked images, re-uploading them, and updating spreadsheet URLs. Handling this manually took exhausting hours daily.",
@@ -640,7 +799,6 @@
             {
                 title: "Social Media AI Sales Agent ('Country Man')",
                 isClientProject: false,
-                badge: "🛠️ Architectural Showcase",
                 badgeClass: "border-teal-500/30 bg-teal-500/10 text-teal-300",
                 image: "./image/project/social_automation.png",
                 challenge: "Handling high volumes of Facebook Messenger inquiries for custom leather goods (wallets, bags, key rings) with text inquiries and voice notes. Manually calculating city-specific delivery charges, verifying advance payments, and logging leads led to slow responses and lost sales.",
@@ -651,7 +809,6 @@
             {
                 title: "CAG (Cache-Augmented Generation) & Medical Exam Generator",
                 isClientProject: false,
-                badge: "🛠️ Architectural Showcase",
                 badgeClass: "border-teal-500/30 bg-teal-500/10 text-teal-300",
                 image: "./image/project/cag_system.png",
                 challenge: "Standard RAG architectures repeatedly upload entire medical textbooks to LLMs, resulting in enormous token bills, high latency, and occasional hallucinations on clinical Australian Physiotherapy Council (APC) exam questions.",
@@ -662,7 +819,6 @@
             {
                 title: "Auto Blog Publisher",
                 isClientProject: false,
-                badge: "🛠️ Architectural Showcase",
                 badgeClass: "border-teal-500/30 bg-teal-500/10 text-teal-300",
                 image: "./image/project/blog.png",
                 challenge: "Bloggers frequently spend substantial budgets hiring writers to produce articles, followed by hours spent on manual publishing and SEO formatting.",
@@ -673,7 +829,6 @@
             {
                 title: "Automated Social Media Posting Agent",
                 isClientProject: false,
-                badge: "🛠️ Architectural Showcase",
                 badgeClass: "border-teal-500/30 bg-teal-500/10 text-teal-300",
                 image: "./image/project/auto_post.png",
                 challenge: "Writing titles, descriptions, hashtags, and manually distributing posts across multiple social channels repeatedly was a major bottleneck.",
@@ -684,7 +839,6 @@
             {
                 title: "Workflow Backup & Disaster Recovery Agent",
                 isClientProject: false,
-                badge: "🛠️ Architectural Showcase",
                 badgeClass: "border-teal-500/30 bg-teal-500/10 text-teal-300",
                 image: "./image/project/workflow_backup.png",
                 challenge: "Lack of routine backups leaves mission-critical n8n and automation instances vulnerable to accidental deletions, server migrations, or data loss.",
@@ -695,7 +849,6 @@
             {
                 title: "Resume Optimization & Tailoring Agent",
                 isClientProject: false,
-                badge: "🛠️ Architectural Showcase",
                 badgeClass: "border-teal-500/30 bg-teal-500/10 text-teal-300",
                 image: "./image/project/resume_optimaizer.png",
                 challenge: "Job candidates spend hours manually rewriting their resumes for every individual job posting to match ATS keywords and job criteria.",
@@ -706,7 +859,6 @@
             {
                 title: "Google Maps Lead Generation Pipeline",
                 isClientProject: false,
-                badge: "🛠️ Architectural Showcase",
                 badgeClass: "border-teal-500/30 bg-teal-500/10 text-teal-300",
                 image: "./image/project/leadgen.png",
                 challenge: "Manual lead gathering from local directory listings is notoriously tedious, slow, and prone to messy, non-standardized contact entries.",
@@ -717,7 +869,6 @@
             {
                 title: "Smart Dynamic AI Model Routing Agent",
                 isClientProject: false,
-                badge: "🛠️ Architectural Showcase",
                 badgeClass: "border-teal-500/30 bg-teal-500/10 text-teal-300",
                 image: "./image/project/daynamic_brain.png",
                 challenge: "Free/cheap AI models fail on complex reasoning tasks, while using premium frontier models for simple tasks causes unnecessarily high API bills.",
@@ -728,7 +879,6 @@
             {
                 title: "Automated Invoice Processing Agent",
                 isClientProject: false,
-                badge: "🛠️ Architectural Showcase",
                 badgeClass: "border-teal-500/30 bg-teal-500/10 text-teal-300",
                 image: "./image/project/invoice.png",
                 challenge: "Manually generating and emailing invoices after order confirmations is time-consuming and introduces clerical errors.",
@@ -739,7 +889,6 @@
             {
                 title: "Human-in-the-Loop Verification Pipeline",
                 isClientProject: false,
-                badge: "🛠️ Architectural Showcase",
                 badgeClass: "border-teal-500/30 bg-teal-500/10 text-teal-300",
                 image: "./image/project/humaneinloop.png",
                 challenge: "Autonomous AI workflows cannot be left 100% unsupervised when dealing with sensitive operations, financial disbursements, or public social publishing.",
@@ -815,7 +964,6 @@
                             <!-- Project Badge (Client vs Showcase) -->
                             <div class="absolute top-2 right-2">
                                 <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wide border backdrop-blur-md ${project.badgeClass}">
-                                    ${project.badge}
                                 </span>
                             </div>
 
