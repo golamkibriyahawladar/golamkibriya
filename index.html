@@ -4,8 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Golam Kibrya - AI Automation Expert</title>
+    <title>Golam Kibriya — AI Automation & Voice Agent Specialist</title>
+    <meta name="description" content="Portfolio of Golam Kibriya - AI Automation Specialist specializing in n8n, Voice AI, CAG/RAG Systems, API integrations, and Autonomous Business Agents.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        teal: {
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         * {
             margin: 0;
@@ -13,19 +37,24 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            overflow-x: clip;
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .dark {
-            background-color: #111827;
-            color: #f9fafb;
+            background-color: #0c111d;
+            color: #f3f4f6;
         }
 
         .light {
-            background-color: #f9fafb;
-            color: #111827;
+            background-color: #f8fafc;
+            color: #0f172a;
         }
 
         #network-canvas {
@@ -38,194 +67,342 @@
             z-index: 0;
         }
 
+        /* Interactive Cursor Spotlight */
+        #cursor-spotlight {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 600px;
+            height: 600px;
+            margin-left: -300px;
+            margin-top: -300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(20, 184, 166, 0.12) 0%, rgba(20, 184, 166, 0.03) 45%, transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+            transition: transform 0.15s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+        }
+
+        .light #cursor-spotlight {
+            background: radial-gradient(circle, rgba(20, 184, 166, 0.15) 0%, rgba(20, 184, 166, 0.04) 45%, transparent 70%);
+        }
+
         .content {
             position: relative;
             z-index: 10;
         }
 
         .nav-blur {
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
         }
 
         .smooth-transition {
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .project-image {
             width: 100%;
-            height: 250px;
-            object-fit: contain;
+            height: 165px;
+            object-fit: cover;
             border-radius: 0.75rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: #000;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* Glassmorphism Styles */
+        .glass-card {
+            background: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+            transform-style: preserve-3d;
+            will-change: transform;
         }
 
-        .fade-in {
-            animation: fadeIn 0.6s ease-out;
+        .light .glass-card {
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid rgba(0, 0, 0, 0.08);
         }
 
-        .hover-scale {
-            transition: transform 0.3s ease;
+        /* Glow effects */
+        .glow-teal {
+            box-shadow: 0 0 35px -5px rgba(20, 184, 166, 0.25);
         }
 
-        .hover-scale:hover {
+        /* Scroll Reveal Animation */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal-on-scroll.is-revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Live Pipeline Node Pulse Animation */
+        .pipeline-node {
+            transition: all 0.4s ease;
+        }
+
+        .pipeline-node.node-active {
+            border-color: #2dd4bf !important;
+            box-shadow: 0 0 20px rgba(45, 212, 191, 0.4);
             transform: scale(1.02);
         }
 
-        .hero-image {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #14b8a6;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        /* Live Data Packet Flow Line */
+        .data-stream {
             position: relative;
             overflow: hidden;
         }
 
-        .hero-image img {
+        .data-stream::after {
+            content: '';
             position: absolute;
-            inset: 0;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            object-position: center;
-            display: block;
+            background: linear-gradient(180deg, transparent, #2dd4bf, transparent);
+            transform: translateY(-100%);
+            animation: flowDown 2s infinite linear;
         }
 
-        @media (max-width: 768px) {
-            .hero-image {
-                width: 250px;
-                height: 250px;
-            }
+        @keyframes flowDown {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        /* Pinned Horizontal Carousel Track */
+        #projects-track {
+            will-change: transform;
+            transition: transform 0.08s ease-out;
         }
     </style>
-
-    <script id="retell-widget" src="https://dashboard.retellai.com/retell-widget.js" type="module"
-        data-public-key="public_key_38633c9df4a23bdfee208" data-agent-id="agent_977313b952341b90c93ae542e9"
-        data-show-ai-popup="true" data-show-ai-popup-time="5" data-auto-open="false" data-color="#3b82f6">
-        </script>
-
 </head>
 
 <body class="dark">
+    <!-- Interactive Cursor Glow Spotlight -->
+    <div id="cursor-spotlight"></div>
+
     <canvas id="network-canvas"></canvas>
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 w-full z-50 smooth-transition nav-blur border-b">
+    <nav id="navbar" class="fixed top-0 w-full z-50 smooth-transition nav-blur border-b border-gray-800/80 bg-[#0c111d]/90">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <div class="font-bold text-xl text-teal-500">GOLAM KIBRYA</div>
+                <a href="#home" class="flex items-center gap-2 font-bold text-xl tracking-tight text-white group">
+                    <span class="h-2.5 w-2.5 rounded-full bg-teal-400 shadow-[0_0_10px_#2dd4bf] group-hover:scale-125 transition-transform"></span>
+                    <span>GOLAM <span class="text-teal-400">KIBRIYA</span></span>
+                </a>
 
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="nav-link hover:text-teal-500 smooth-transition cursor-pointer">Home</a>
-                    <a href="#projects"
-                        class="nav-link hover:text-teal-500 smooth-transition cursor-pointer">Projects</a>
-                    <a href="#reviews" class="nav-link hover:text-teal-500 smooth-transition cursor-pointer">Reviews</a>
-                    <a href="#contact" class="nav-link hover:text-teal-500 smooth-transition cursor-pointer">Contact
-                        Me</a>
-                    <button
-                        class="bg-teal-500 text-white px-6 py-2 rounded-lg hover:bg-teal-600 smooth-transition font-semibold">
-                        HIRE ME
-                    </button>
-                    <button id="theme-toggle" class="p-2 rounded-lg hover:bg-gray-800 smooth-transition">
+                <div class="hidden md:flex items-center space-x-7">
+                    <a href="#home" class="nav-link text-sm font-medium hover:text-teal-400 smooth-transition">Home</a>
+                    <a href="#skills" class="nav-link text-sm font-medium hover:text-teal-400 smooth-transition">Skills</a>
+                    <a href="#projects" class="nav-link text-sm font-medium hover:text-teal-400 smooth-transition">Projects</a>
+                    <a href="#contact" class="nav-link text-sm font-medium hover:text-teal-400 smooth-transition">Contact</a>
+                    
+                    <!-- Direct Mailto Hire Me Button -->
+                    <a href="mailto:golamkibriyahawladar@gmail.com?subject=Inquiry%20Regarding%20AI%20Automation%20Project&body=Hi%20Golam,%0D%0A%0D%0AI%20would%20like%20to%20hire%20you%20for%20an%20automation%20project.%20Here%20are%20the%20details:%0D%0A%0D%0A"
+                        class="bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-400 hover:to-teal-500 text-white px-5 py-2 rounded-lg smooth-transition font-semibold text-sm shadow-md hover:shadow-teal-500/20 active:scale-95 inline-flex items-center gap-1.5">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                        <span>HIRE ME</span>
+                    </a>
+
+                    <!-- Theme Toggle -->
+                    <button id="theme-toggle" aria-label="Toggle Theme" class="p-2 rounded-lg hover:bg-gray-800/60 text-gray-300 hover:text-white smooth-transition">
                         <svg id="sun-icon" class="hidden w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
-                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
                         </svg>
                         <svg id="moon-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
-                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
                         </svg>
                     </button>
                 </div>
 
-                <button id="mobile-menu-btn" class="md:hidden p-2">
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" aria-label="Open Navigation Menu" class="md:hidden p-2 text-gray-300 hover:text-white">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
             </div>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden border-t">
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-800 bg-[#0c111d]/95 backdrop-blur-xl">
             <div class="px-4 py-4 space-y-3">
-                <a href="#home" class="block py-2 hover:text-teal-500 smooth-transition">Home</a>
-                <a href="#projects" class="block py-2 hover:text-teal-500 smooth-transition">Projects</a>
-                <a href="#reviews" class="block py-2 hover:text-teal-500 smooth-transition">Reviews</a>
-                <a href="#contact" class="block py-2 hover:text-teal-500 smooth-transition">Contact Me</a>
-                <button
-                    class="w-full bg-teal-500 text-white px-6 py-2 rounded-lg hover:bg-teal-600 smooth-transition font-semibold">
+                <a href="#home" class="block py-2 text-sm font-medium hover:text-teal-400 smooth-transition">Home</a>
+                <a href="#skills" class="block py-2 text-sm font-medium hover:text-teal-400 smooth-transition">Skills</a>
+                <a href="#projects" class="block py-2 text-sm font-medium hover:text-teal-400 smooth-transition">Projects</a>
+                <a href="#contact" class="block py-2 text-sm font-medium hover:text-teal-400 smooth-transition">Contact</a>
+                <a href="mailto:golamkibriyahawladar@gmail.com?subject=Inquiry%20Regarding%20AI%20Automation%20Project"
+                    class="block w-full text-center bg-teal-500 hover:bg-teal-600 text-white px-6 py-2.5 rounded-lg smooth-transition font-semibold text-sm">
                     HIRE ME
-                </button>
+                </a>
             </div>
         </div>
     </nav>
 
     <div class="content">
-        <!-- Hero Section -->
-        <section id="home" class="min-h-screen flex items-center justify-center pt-16">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div class="space-y-6 fade-in">
-                        <div class="inline-block">
-                            <span class="text-teal-500 font-semibold text-sm tracking-wider uppercase">AI Automation
-                                Specialist</span>
+        <!-- Hero Section (Photo removed, replaced with sleek Automation Pipeline Terminal & Typing Effect) -->
+        <section id="home" class="min-h-screen flex items-center justify-center pt-24 pb-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Hero Content -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-teal-500/30 bg-teal-500/10 text-teal-400 text-xs font-mono tracking-wider uppercase">
+                            <span class="h-2 w-2 rounded-full bg-teal-400 animate-pulse"></span>
+                            AI & Voice Automation Specialist
                         </div>
-                        <h1 class="text-2xl md:text-4xl font-bold leading-tight">
-                            Transform Your Business with
-                            <span class="text-teal-500"> Intelligent Automation</span>
+                        
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.15] tracking-tight">
+                            Transform Your Business with 
+                            <br>
+                            <span class="bg-gradient-to-r from-teal-400 via-emerald-300 to-cyan-400 bg-clip-text text-transparent" id="typewriter-text">n8n Automation</span><span class="text-teal-400 animate-pulse font-light">|</span>
                         </h1>
-                        <p class="text-xl opacity-80">
-                            Expert in n8n, API Integration and automation. I help businesses save
-                            time, reduce costs, and scale efficiently through cutting-edge AI solutions.
-                            <br> <br>
-                            Let's kill your boring task
+                        
+                        <p class="text-lg md:text-xl opacity-80 max-w-2xl leading-relaxed">
+                            Specializing in <span class="text-teal-400 font-semibold">n8n workflows</span>, <span class="text-teal-400 font-semibold">Voice AI (Retell/Vapi)</span>, <span class="text-teal-400 font-semibold">CAG/RAG architectures</span>, and autonomous business operations. 
+                            <br class="hidden sm:inline">
+                            I eliminate repetitive manual tasks, slash operational costs, and build reliable 24/7 AI pipelines.
                         </p>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="px-4 py-2 rounded-full text-sm font-medium border skill-badge">n8n
-                                Expert</span>
-                            <span class="px-4 py-2 rounded-full text-sm font-medium border skill-badge">API
-                                Integration</span>
-                            <span class="px-4 py-2 rounded-full text-sm font-medium border skill-badge"> Lang
-                                Flow</span>
-                            <span class="px-4 py-2 rounded-full text-sm font-medium border skill-badge">zapier </span>
-                            <span class="px-4 py-2 rounded-full text-sm font-medium border skill-badge">Zoho CRM</span>
+
+                        <!-- Skill Quick Tags -->
+                        <div class="flex flex-wrap gap-2 pt-1 font-mono text-xs">
+                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/50 text-gray-300">n8n Expert</span>
+                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/50 text-gray-300">CAG & RAG Systems</span>
+                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/50 text-gray-300">Voice AI (Retell / Vapi)</span>
+                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/50 text-gray-300">Zoho CRM & GHL</span>
+                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/50 text-gray-300">Webhooks & API Sync</span>
                         </div>
-                        <button
-                            class="bg-teal-500 text-white px-8 py-4 rounded-lg hover:bg-teal-600 smooth-transition font-semibold text-lg inline-flex items-center space-x-2 shadow-lg hover-scale">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
-                                </path>
-                            </svg>
-                            <span>Book a Discovery Call</span>
-                        </button>
+
+                        <!-- CTA Actions -->
+                        <div class="flex flex-wrap items-center gap-4 pt-3">
+                            <a href="mailto:golamkibriyahawladar@gmail.com?subject=Book%20a%20Discovery%20Call%20-%20AI%20Automation&body=Hi%20Golam,%0D%0A%0D%0AI%20would%20like%20to%20schedule%20a%20discovery%20call%20to%20discuss%20our%20automation%20needs.%0D%0A%0D%0A"
+                                class="bg-teal-500 hover:bg-teal-600 text-white px-7 py-3.5 rounded-xl smooth-transition font-semibold text-base inline-flex items-center gap-2 shadow-lg shadow-teal-500/20 active:scale-95 hover:translate-y-[-2px]">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                                <span>Book a Discovery Call</span>
+                            </a>
+                            <a href="#projects"
+                                class="border border-gray-700 hover:border-teal-500/60 bg-gray-800/40 hover:bg-gray-800/80 px-6 py-3.5 rounded-xl smooth-transition font-medium text-base inline-flex items-center gap-2 hover:translate-y-[-2px]">
+                                <span>Explore Workflows</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
-                    <div class="flex justify-center fade-in">
-                        <div class="relative ">
-                            <div
-                                class="hero-image flex  justify-center text-6xl font-bold bg-gradient-to-br from-teal-500 to-teal-700 text-white ">
-                                <img src="./image/Gemini_Generated_Image_603q6f603q6f603q-removebg-preview.png" alt="">
+
+                    <!-- Right Hero Visual: Live Automation Pipeline Terminal with Active Node Cycle -->
+                    <div class="lg:col-span-5 w-full">
+                        <div class="glass-card rounded-2xl p-6 relative overflow-hidden border border-teal-500/30 glow-teal">
+                            <!-- Terminal Header -->
+                            <div class="flex items-center justify-between border-b border-gray-800 pb-4 mb-5">
+                                <div class="flex items-center gap-2">
+                                    <span class="h-3 w-3 rounded-full bg-red-500/80"></span>
+                                    <span class="h-3 w-3 rounded-full bg-yellow-500/80"></span>
+                                    <span class="h-3 w-3 rounded-full bg-green-500/80"></span>
+                                    <span class="font-mono text-xs text-gray-400 ml-2">n8n-pipeline-core.io</span>
+                                </div>
+                                <span class="inline-flex items-center gap-1.5 font-mono text-[11px] text-teal-400 bg-teal-500/10 px-2.5 py-0.5 rounded-full border border-teal-500/20">
+                                    <span class="h-1.5 w-1.5 rounded-full bg-teal-400 animate-ping"></span>
+                                    LIVE ENGINE
+                                </span>
                             </div>
-                            <div
-                                class="absolute -bottom-4 -right-4 bg-teal-500 text-white px-6 py-3 rounded-lg font-semibold shadow-xl">
-                                Available for Hire
+
+                            <!-- Interactive Workflow Pipeline Nodes with Live Animation -->
+                            <div class="space-y-3 font-mono text-xs" id="pipeline-container">
+                                <!-- Node 1 -->
+                                <div id="pnode-1" class="pipeline-node flex items-center gap-3 p-3 rounded-xl bg-gray-800/60 border border-gray-700/60 transition-all duration-300">
+                                    <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-teal-500/20 text-teal-400">
+                                        ⚡
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex justify-between items-center">
+                                            <span class="font-semibold text-gray-200">Webhook / Inbound Trigger</span>
+                                            <span class="text-[10px] text-teal-400 font-bold" id="node-status-1">200 OK</span>
+                                        </div>
+                                        <p class="text-[11px] text-gray-400 truncate">Facebook • Telegram • REST Webhook</p>
+                                    </div>
+                                </div>
+
+                                <!-- Connector Line -->
+                                <div class="flex justify-center -my-1">
+                                    <div class="data-stream w-0.5 h-4 bg-gradient-to-b from-teal-500 to-indigo-500"></div>
+                                </div>
+
+                                <!-- Node 2 -->
+                                <div id="pnode-2" class="pipeline-node flex items-center gap-3 p-3 rounded-xl bg-gray-800/60 border border-indigo-500/40 transition-all duration-300">
+                                    <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-indigo-500/20 text-indigo-400">
+                                        🧠
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex justify-between items-center">
+                                            <span class="font-semibold text-gray-200">AI Intelligence Core</span>
+                                            <span class="text-[10px] text-indigo-400 font-bold" id="node-status-2">Gemini 3.5</span>
+                                        </div>
+                                        <p class="text-[11px] text-gray-400 truncate">Voice Transcription + 5-Step Funnel Agent</p>
+                                    </div>
+                                </div>
+
+                                <!-- Connector Line -->
+                                <div class="flex justify-center -my-1">
+                                    <div class="data-stream w-0.5 h-4 bg-gradient-to-b from-indigo-500 to-sky-500"></div>
+                                </div>
+
+                                <!-- Node 3 -->
+                                <div id="pnode-3" class="pipeline-node flex items-center gap-3 p-3 rounded-xl bg-gray-800/60 border border-sky-500/40 transition-all duration-300">
+                                    <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-sky-500/20 text-sky-400">
+                                        🗄️
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex justify-between items-center">
+                                            <span class="font-semibold text-gray-200">CAG / Vector Store Cache</span>
+                                            <span class="text-[10px] text-sky-400 font-bold" id="node-status-3">Token Hit</span>
+                                        </div>
+                                        <p class="text-[11px] text-gray-400 truncate">Gemini Files API + Postgres / Vector DB</p>
+                                    </div>
+                                </div>
+
+                                <!-- Connector Line -->
+                                <div class="flex justify-center -my-1">
+                                    <div class="data-stream w-0.5 h-4 bg-gradient-to-b from-sky-500 to-emerald-500"></div>
+                                </div>
+
+                                <!-- Node 4 -->
+                                <div id="pnode-4" class="pipeline-node flex items-center gap-3 p-3 rounded-xl bg-gray-800/60 border border-emerald-500/40 transition-all duration-300">
+                                    <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-emerald-500/20 text-emerald-400">
+                                        🚀
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex justify-between items-center">
+                                            <span class="font-semibold text-gray-200">CRM & Business Action</span>
+                                            <span class="text-[10px] text-emerald-400 font-bold" id="node-status-4">Executed</span>
+                                        </div>
+                                        <p class="text-[11px] text-gray-400 truncate">Lead Saved • Zoho / GHL • Invoice Dispatched</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Live Stat Footer with Real-time Count-up -->
+                            <div class="mt-5 pt-4 border-t border-gray-800/80 flex items-center justify-between text-[11px] font-mono text-gray-400">
+                                <span class="flex items-center gap-1.5">
+                                    <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                                    <span>Processed: <strong id="processed-counter" class="text-teal-400">1,482</strong> items</span>
+                                </span>
+                                <span>Latency: <strong class="text-teal-400">1.2s</strong></span>
                             </div>
                         </div>
                     </div>
@@ -233,217 +410,342 @@
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="py-20">
+        <!-- Technical Skills Section -->
+        <section id="skills" class="py-20 border-t border-gray-800/60">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-4">Featured Projects</h2>
-                    <p class="text-xl opacity-80">Real-world automation solutions delivering measurable results</p>
+                <div class="text-center mb-16 reveal-on-scroll">
+                    <span class="text-teal-400 font-mono text-xs tracking-widest uppercase mb-2 inline-block">Architecture & Tools</span>
+                    <h2 class="text-3xl md:text-5xl font-bold tracking-tight">Core Technical Stack</h2>
+                    <p class="text-lg opacity-80 max-w-2xl mx-auto mt-3">
+                        Battle-tested tools and frameworks used to engineer resilient, high-speed automation workflows.
+                    </p>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-8" id="projects-container"></div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Category 1: Workflow & Automation -->
+                    <div class="glass-card hover-tilt rounded-2xl p-6 border hover:border-teal-500/50 reveal-on-scroll">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2.5 rounded-xl bg-teal-500/10 text-teal-400 text-xl">⚡</div>
+                            <div>
+                                <h3 class="font-bold text-lg">Automation & Integration</h3>
+                                <p class="text-xs text-gray-400 font-mono">Workflow Orchestration</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-lg border border-teal-500/30 bg-teal-500/10 text-teal-300 text-xs font-semibold">n8n Expert</span>
+                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/60 text-gray-200 text-xs font-medium">API & Webhook Integration</span>
+                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/60 text-gray-200 text-xs font-medium">Zapier</span>
+                        </div>
+                    </div>
+
+                    <!-- Category 2: AI & LLM Systems -->
+                    <div class="glass-card hover-tilt rounded-2xl p-6 border hover:border-indigo-500/50 reveal-on-scroll">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400 text-xl">🧠</div>
+                            <div>
+                                <h3 class="font-bold text-lg">AI & LLM Architecture</h3>
+                                <p class="text-xs text-gray-400 font-mono">Reasoning & Memory</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-lg border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 text-xs font-semibold">LangFlow</span>
+                            <span class="px-3 py-1.5 rounded-lg border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 text-xs font-semibold">LangChain</span>
+                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/60 text-gray-200 text-xs font-medium">RAG (Retrieval-Augmented)</span>
+                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/60 text-gray-200 text-xs font-medium">CAG (Cache-Augmented)</span>
+                        </div>
+                    </div>
+
+                    <!-- Category 3: Voice AI & Telephony -->
+                    <div class="glass-card hover-tilt rounded-2xl p-6 border hover:border-cyan-500/50 reveal-on-scroll">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 text-xl">🎙️</div>
+                            <div>
+                                <h3 class="font-bold text-lg">Voice AI & Telephony</h3>
+                                <p class="text-xs text-gray-400 font-mono">Conversational Speech</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-lg border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 text-xs font-semibold">Retell AI</span>
+                            <span class="px-3 py-1.5 rounded-lg border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 text-xs font-semibold">Vapi</span>
+                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/60 text-gray-200 text-xs font-medium">ElevenLabs</span>
+                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/60 text-gray-200 text-xs font-medium">Twilio Telephony</span>
+                        </div>
+                    </div>
+
+                    <!-- Category 4: CRM & Business Platforms -->
+                    <div class="glass-card hover-tilt rounded-2xl p-6 border hover:border-emerald-500/50 reveal-on-scroll">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 text-xl">📊</div>
+                            <div>
+                                <h3 class="font-bold text-lg">CRM & Business Ops</h3>
+                                <p class="text-xs text-gray-400 font-mono">Enterprise Systems</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-lg border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-xs font-semibold">Zoho CRM</span>
+                            <span class="px-3 py-1.5 rounded-lg border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-xs font-semibold">GoHighLevel (GHL)</span>
+                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/60 text-gray-200 text-xs font-medium">Google Workspace & Sheets</span>
+                        </div>
+                    </div>
+
+                    <!-- Category 5: Web & Frontend -->
+                    <div class="glass-card hover-tilt rounded-2xl p-6 border hover:border-amber-500/50 reveal-on-scroll">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2.5 rounded-xl bg-amber-500/10 text-amber-400 text-xl">🌐</div>
+                            <div>
+                                <h3 class="font-bold text-lg">Web & Frontend</h3>
+                                <p class="text-xs text-gray-400 font-mono">Interfaces & CMS</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-lg border border-amber-500/30 bg-amber-500/10 text-amber-300 text-xs font-semibold">HTML5</span>
+                            <span class="px-3 py-1.5 rounded-lg border border-amber-500/30 bg-amber-500/10 text-amber-300 text-xs font-semibold">CSS3</span>
+                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/60 text-gray-200 text-xs font-medium">JavaScript</span>
+                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/60 text-gray-200 text-xs font-medium">WordPress</span>
+                        </div>
+                    </div>
+
+                    <!-- Category 6: Databases & Storage -->
+                    <div class="glass-card hover-tilt rounded-2xl p-6 border hover:border-purple-500/50 reveal-on-scroll">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2.5 rounded-xl bg-purple-500/10 text-purple-400 text-xl">💾</div>
+                            <div>
+                                <h3 class="font-bold text-lg">Databases & Vector Storage</h3>
+                                <p class="text-xs text-gray-400 font-mono">Data Persistence</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-lg border border-purple-500/30 bg-purple-500/10 text-purple-300 text-xs font-semibold">PostgreSQL</span>
+                            <span class="px-3 py-1.5 rounded-lg border border-purple-500/30 bg-purple-500/10 text-purple-300 text-xs font-semibold">SQL</span>
+                            <span class="px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-800/60 text-gray-200 text-xs font-medium">Vector Databases</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Reviews Section -->
-        <section id="reviews" class="py-20">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-4">Client Testimonials</h2>
-                    <p class="text-xl opacity-80">What clients say about working with me</p>
+        <!-- PINNED HORIZONTAL CAROUSEL PROJECTS SECTION -->
+        <section id="projects" class="relative" style="height: 1400vh;">
+            <!-- Section Header in normal flow (scrolls up and hides under navbar as user scrolls into cards) -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4">
+                <div class="flex items-center justify-between border-b border-gray-800/60 pb-3">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white">
+                        Featured Projects &amp; Workflows
+                    </h2>
+                    <span class="font-mono text-xs text-teal-400 font-bold bg-teal-500/10 px-3 py-1 rounded-full border border-teal-500/20">
+                        11 Production Workflows
+                    </span>
+                </div>
+            </div>
+
+            <!-- Sticky Window (Full Viewport for Cards) -->
+            <div class="sticky top-16 flex h-[calc(100vh-64px)] flex-col justify-center overflow-hidden relative">
+                
+                <!-- Floating Project Counter -->
+                <div class="absolute top-4 right-6 md:right-12 z-20 pointer-events-none">
+                    <span id="current-project-index" class="font-mono text-xs sm:text-sm text-teal-400 font-bold bg-gray-900/90 backdrop-blur-md px-3.5 py-1 rounded-full border border-teal-500/30 shadow-lg">
+                        Project 01 / 11
+                    </span>
                 </div>
 
-                <div class="grid md:grid-cols-3 gap-8" id="reviews-container"></div>
+                <!-- Horizontal Sliding Track (Moves Right to Left on Scroll) -->
+                <div class="my-auto w-full overflow-hidden flex items-center">
+                    <div id="projects-track" class="flex gap-6 sm:gap-8 px-6 md:px-12 items-stretch h-[540px] max-h-[78vh] min-h-[460px]">
+                        <!-- Project Cards will be dynamically injected here -->
+                    </div>
+                </div>
+
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-20">
+        <section id="contact" class="py-20 border-t border-gray-800/60">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="contact-card rounded-xl p-12 border text-center">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6">Let's Build Something Amazing</h2>
-                    <p class="text-xl mb-8 opacity-80">
-                        Ready to automate your business and unlock new levels of efficiency? Let's discuss your project.
+                <div class="contact-card glass-card hover-tilt rounded-2xl p-8 sm:p-12 border text-center relative overflow-hidden reveal-on-scroll">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-teal-500/30 bg-teal-500/10 text-teal-400 text-xs font-mono mb-4">
+                        <span>Get In Touch</span>
+                    </div>
+
+                    <h2 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">Let's Build Something Autonomous</h2>
+                    <p class="text-lg mb-8 opacity-80 max-w-xl mx-auto leading-relaxed">
+                        Ready to automate boring tasks, integrate cutting-edge LLMs, and streamline your operations? Let's discuss your project today.
                     </p>
 
+                    <!-- Contact Channels -->
                     <div class="flex flex-wrap justify-center gap-4 mb-8">
-                        <a href="golamkibriyahawladar@gmail.com
-" class="contact-btn flex items-center space-x-2 px-6 py-3 rounded-lg smooth-transition">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <!-- Direct Mailto Link -->
+                        <a href="mailto:golamkibriyahawladar@gmail.com?subject=Project%20Inquiry%20-%20AI%20Automation&body=Hi%20Golam,%0D%0A%0D%0AI%20am%20interested%20in%20discussing%20an%20automation%20project.%0D%0A%0D%0ABest%20regards,"
+                            class="contact-btn flex items-center space-x-2 px-6 py-3 rounded-xl smooth-transition border border-gray-700 hover:border-teal-500/60 font-medium text-sm hover:translate-y-[-2px]">
+                            <svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
                                 </path>
                             </svg>
                             <span>Email Me</span>
                         </a>
-                        <a href="https://www.linkedin.com/in/golam-kibriya-hawladar/" target="_blank"
-                            class="contact-btn flex items-center space-x-2 px-6 py-3 rounded-lg smooth-transition">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+
+                        <!-- LinkedIn -->
+                        <a href="https://www.linkedin.com/in/golam-kibriya-hawladar/" target="_blank" rel="noopener noreferrer"
+                            class="contact-btn flex items-center space-x-2 px-6 py-3 rounded-xl smooth-transition border border-gray-700 hover:border-teal-500/60 font-medium text-sm hover:translate-y-[-2px]">
+                            <svg class="w-5 h-5 text-teal-400" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                             </svg>
                             <span>LinkedIn</span>
                         </a>
-                        <a href="https://github.com/golam-kibriya123" target="_blank"
-                            class="contact-btn flex items-center space-x-2 px-6 py-3 rounded-lg smooth-transition">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+
+                        <!-- GitHub -->
+                        <a href="https://github.com/golam-kibriya123" target="_blank" rel="noopener noreferrer"
+                            class="contact-btn flex items-center space-x-2 px-6 py-3 rounded-xl smooth-transition border border-gray-700 hover:border-teal-500/60 font-medium text-sm hover:translate-y-[-2px]">
+                            <svg class="w-5 h-5 text-teal-400" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                             </svg>
                             <span>GitHub</span>
                         </a>
                     </div>
 
-                    <button
-                        class="bg-teal-500 text-white px-10 py-4 rounded-lg hover:bg-teal-600 smooth-transition font-semibold text-lg shadow-lg hover-scale">
+                    <!-- Direct Mailto Action -->
+                    <a href="mailto:golamkibriyahawladar@gmail.com?subject=Schedule%20a%20Free%20Consultation&body=Hi%20Golam,%0D%0A%0D%0AI%20would%20like%20to%20schedule%20a%20free%20consultation%20regarding%20an%20automation%20workflow.%0D%0A%0D%0ABest%20regards,"
+                        class="bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-400 hover:to-teal-500 text-white px-8 py-4 rounded-xl smooth-transition font-semibold text-base shadow-lg shadow-teal-500/20 hover:translate-y-[-2px] inline-block active:scale-95">
                         Schedule a Free Consultation
-                    </button>
+                    </a>
                 </div>
             </div>
         </section>
 
         <!-- Footer -->
-        <footer class="border-t py-8">
+        <footer class="border-t border-gray-800/80 py-8">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center opacity-70">
-                    <p>© 2025 Golam Kibrya. All rights reserved</p>
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm opacity-70">
+                    <p>© 2025-2026 Golam Kibriya. All rights reserved.</p>
+                    <p class="font-mono text-xs">Architecting autonomous AI & Voice workflows</p>
                 </div>
             </div>
         </footer>
     </div>
 
     <script>
-        // Projects Data
+        // Projects Data with 'All In One' marked as Verified Client Project and others as Showcases
         const projects = [
             {
-                title: "All In One",
+                title: "All In One Automation Engine",
+                isClientProject: true,
+                badge: "⭐ Verified Client Project",
+                badgeClass: "border-amber-500/40 bg-amber-500/10 text-amber-300",
                 image: "./image/project/allinOne.png",
-                challenge: "This was an actual project for a client. I developed a custom workflow because they were struggling with massive data in their sheet. They had to manually generate content from the data, download and edit images from links, re-upload them, and update the sheet with new URLs. Handling all this data manually was very time-consuming and exhausting.",
-                solution: "I have designed this AI workflow as ‘all-in-one.’ It will fetch data from a sheet, analyze the data, write descriptions, edit images based on user queries, back up the images, and finally compile all the processed data back into a sheet.",
-                metrics: ["87% faster processing", "Daily Time save"],
-                tech: ["n8n", "telegram", "Drive", "sheet",]
+                challenge: "An actual client project: The client was overwhelmed with massive spreadsheet data, manually generating descriptions, downloading and editing linked images, re-uploading them, and updating spreadsheet URLs. Handling this manually took exhausting hours daily.",
+                solution: "Engineered an all-in-one autonomous workflow. The system automatically fetches row data, analyzes context, generates SEO copy, dynamically edits images based on user queries, backs up files to Google Drive, and synchronizes updated records back into the sheet without human intervention.",
+                metrics: ["87% Faster Processing", "Daily Hours Saved", "Autonomous Sync"],
+                tech: ["n8n", "Telegram", "Google Drive", "Google Sheets", "AI APIs"]
             },
             {
-                title: "Auto blog publisher",
+                title: "Social Media AI Sales Agent ('Country Man')",
+                isClientProject: false,
+                badge: "🛠️ Architectural Showcase",
+                badgeClass: "border-teal-500/30 bg-teal-500/10 text-teal-300",
+                image: "./image/project/social_automation.png",
+                challenge: "Handling high volumes of Facebook Messenger inquiries for custom leather goods (wallets, bags, key rings) with text inquiries and voice notes. Manually calculating city-specific delivery charges, verifying advance payments, and logging leads led to slow responses and lost sales.",
+                solution: "Engineered an autonomous conversational commerce system via n8n. Inbound Messenger webhooks route audio to Gemini 2.5 Flash Lite for speech transcription, and queue inquiries in Google Sheets with a 30s batch buffer. An AI Agent powered by Gemini 3.5 Flash executes a 5-step sales funnel, calculates delivery fees, verifies payments, and extracts clean leads to Google Sheets.",
+                metrics: ["100% Automated Response", "2-3s Instant Reply", "Zero Missed Leads", "Voice Note Transcription"],
+                tech: ["n8n", "Gemini 3.5 Flash", "Gemini 2.5 Flash Lite", "Facebook Graph API", "Google Sheets", "Webhooks"]
+            },
+            {
+                title: "CAG (Cache-Augmented Generation) & Medical Exam Generator",
+                isClientProject: false,
+                badge: "🛠️ Architectural Showcase",
+                badgeClass: "border-teal-500/30 bg-teal-500/10 text-teal-300",
+                image: "./image/project/cag_system.png",
+                challenge: "Standard RAG architectures repeatedly upload entire medical textbooks to LLMs, resulting in enormous token bills, high latency, and occasional hallucinations on clinical Australian Physiotherapy Council (APC) exam questions.",
+                solution: "Developed a True Cache-Augmented Generation (CAG) architecture in n8n. By caching complete PDF textbooks into Gemini Files API (file URI caching) and pairing with OpenAI Vector Store file search, the system eliminates redundant token charges. It reliably generates high-yield clinical Short Answer Questions and MCQs, chunking results and delivering them directly to Telegram.",
+                metrics: ["85%+ API Cost Savings", "Zero Hallucination with CAG", "Multi-Model (Gemini + GPT-4o)", "Telegram Delivery"],
+                tech: ["n8n", "Gemini Files API (CAG)", "OpenAI Vector Store", "GPT-4o", "Gemini 2.0 Flash", "Telegram API"]
+            },
+            {
+                title: "Auto Blog Publisher",
+                isClientProject: false,
+                badge: "🛠️ Architectural Showcase",
+                badgeClass: "border-teal-500/30 bg-teal-500/10 text-teal-300",
                 image: "./image/project/blog.png",
-                challenge: "From our observation, bloggers often hire dedicated content writers to produce articles, which they then publish manually",
-                solution: "Based on just a single keyword, it will write content, optimize it for SEO, and give it a human-like tone. In some places, it can even write better than a content writer (still under development, not finished yet).",
-                metrics: ["87% faster processing", "95% error reduction", "Daily Time save"],
-                tech: ["n8n", "OpenAI API", "Drive",]
-            },
-            {
-                title: "Project content generator",
-                image: "./image/project/title_genaretor.png",
-                challenge: "When I tried to create my portfolio, I had to write titles and descriptions for all my workflows, which was very tedious for me",
-                solution: "Later, I created a tool for myself that analyzes my workflows and generates a title and description automatically",
-                metrics: ["87% faster processing", "95% error reduction", "Daily Time save"],
-                tech: ["n8n", "OpenAI API", "Drive",]
+                challenge: "Bloggers frequently spend substantial budgets hiring writers to produce articles, followed by hours spent on manual publishing and SEO formatting.",
+                solution: "An end-to-end publishing pipeline that takes a single keyword or topic, researches context, writes long-form SEO-optimized content with human tone, generates metadata, and pre-stages the post for publication.",
+                metrics: ["87% Faster Turnaround", "95% Error Reduction", "Zero Editorial Friction"],
+                tech: ["n8n", "OpenAI API", "Google Drive", "WordPress API"]
             },
             {
                 title: "Automated Social Media Posting Agent",
+                isClientProject: false,
+                badge: "🛠️ Architectural Showcase",
+                badgeClass: "border-teal-500/30 bg-teal-500/10 text-teal-300",
                 image: "./image/project/auto_post.png",
-                challenge: "I had to write the post title and content manually, and I had to post it again and again",
-                solution: "This agent automates social media content creation and posting. It generates a post title and description from a provided topic and image URL, downloads the image from the drive, moves it to a “posted” folder, updates a sheet with the backup title, description, and status as “posted,” and finally sends an email notification upon successful completion.",
-
-                metrics: ["87% faster processing", "95% error reduction", "Daily Time save"],
-                tech: ["n8n", "OpenAI API", "Drive",]
+                challenge: "Writing titles, descriptions, hashtags, and manually distributing posts across multiple social channels repeatedly was a major bottleneck.",
+                solution: "Generates tailored post titles and copy from topics and image URLs, retrieves assets from Google Drive, moves processed items to an archive folder, logs status in Google Sheets, and dispatches email confirmations.",
+                metrics: ["87% Time Saved", "Consistent Posting Cadence", "Automated Notifications"],
+                tech: ["n8n", "OpenAI API", "Google Drive", "Social Media APIs"]
             },
             {
-                title: "Work flow backup agent",
+                title: "Workflow Backup & Disaster Recovery Agent",
+                isClientProject: false,
+                badge: "🛠️ Architectural Showcase",
+                badgeClass: "border-teal-500/30 bg-teal-500/10 text-teal-300",
                 image: "./image/project/workflow_backup.png",
-                challenge: "We normally don’t back up our workflows, which means there’s always a fear that everything could be deleted at any time.",
-                solution: "This agent automatically backs up all workflows to Google Drive at a fixed time every day. It ensures no duplicate projects are created by checking existing backups before saving, maintaining a clean and organized archive of all workflows.",
-                tech: ["n8n", "Sheet", "OpenAI API", "Drive", "Email", "Social media API"],
-
-                metrics: ["87% faster processing", "95% error reduction", "Daily Time save"],
+                challenge: "Lack of routine backups leaves mission-critical n8n and automation instances vulnerable to accidental deletions, server migrations, or data loss.",
+                solution: "Runs scheduled daily backups of all n8n workflows directly to Google Drive. Validates hashes to prevent duplicate archives and sends an execution status report via email.",
+                metrics: ["100% Data Protection", "Zero Duplicate Overhead", "Automated Daily Sync"],
+                tech: ["n8n", "Google Drive", "Google Sheets", "Email API"]
             },
             {
-                title: "Resume Optimization Agent",
+                title: "Resume Optimization & Tailoring Agent",
+                isClientProject: false,
+                badge: "🛠️ Architectural Showcase",
+                badgeClass: "border-teal-500/30 bg-teal-500/10 text-teal-300",
                 image: "./image/project/resume_optimaizer.png",
-                challenge: "CJob seekers often need to prepare a different CV for every job application, and doing this repeatedly can be quite exhausting.",
-                solution: "This agent receives a job post and a candidate’s resume, optimizes the resume based on the job requirements to improve the candidate’s chances, and emails a detailed PDF report outlining improvement areas and suggestions.",
-
-                metrics: ["96% time reduction", "3x content output", "45% engagement boost"],
-                tech: ["n8n", "Social Media APIs", "Webhook", "Email"]
+                challenge: "Job candidates spend hours manually rewriting their resumes for every individual job posting to match ATS keywords and job criteria.",
+                solution: "Ingests job descriptions and candidate resumes, cross-analyzes skill gaps, optimizes bullet points for ATS match, and compiles a comprehensive PDF feedback report with actionable recommendations.",
+                metrics: ["96% Faster Applications", "Higher ATS Match Rate", "PDF Report Generation"],
+                tech: ["n8n", "OpenAI API", "Webhooks", "PDF Generator"]
             },
             {
-                title: "Google Maps Lead Generation Agen",
+                title: "Google Maps Lead Generation Pipeline",
+                isClientProject: false,
+                badge: "🛠️ Architectural Showcase",
+                badgeClass: "border-teal-500/30 bg-teal-500/10 text-teal-300",
                 image: "./image/project/leadgen.png",
-                challenge: "Manually collecting leads from Google Maps is very time-consuming and requires a lot of effort.",
-                solution: "This agent extracts leads from Google Maps, filters the data to retain only the necessary information, and stores the results in a structured sheet for easy access and management",
-
-                metrics: ["96% time reduction", "3x content output", "45% engagement boost"],
-                tech: ["n8n", "Appify", "sheet", "gemini"]
+                challenge: "Manual lead gathering from local directory listings is notoriously tedious, slow, and prone to messy, non-standardized contact entries.",
+                solution: "Scrapes and filters targeted business leads from Google Maps by category and geo-region, sanitizes phone numbers and emails, removes duplicates, and logs verified leads into structured spreadsheets.",
+                metrics: ["10x Lead Volume", "Instant Verification", "Clean Spreadsheet Output"],
+                tech: ["n8n", "Apify", "Google Sheets", "Gemini API"]
             },
             {
-                title: "Smart AI Model (brain)Selection Agent",
+                title: "Smart Dynamic AI Model Routing Agent",
+                isClientProject: false,
+                badge: "🛠️ Architectural Showcase",
+                badgeClass: "border-teal-500/30 bg-teal-500/10 text-teal-300",
                 image: "./image/project/daynamic_brain.png",
-                challenge: "When we use free AI models, they give poor results whenever we need them to handle heavy or complex tasks. But when we use paid AI, even small tasks end up costing too much money.",
-                solution: "This agent automatically selects the most suitable AI model based on the input data to ensure optimal output quality while minimizing costs.",
-
-                metrics: ["96% time reduction", "3x content output", "45% engagement boost"],
-                tech: ["n8n", "Social Media APIs", "Webhook", "Email"]
+                challenge: "Free/cheap AI models fail on complex reasoning tasks, while using premium frontier models for simple tasks causes unnecessarily high API bills.",
+                solution: "An intelligent router that classifies input complexity and token length, dynamically routing simple tasks to fast models (Gemini Flash) and complex reasoning to frontier models (GPT-4o/Claude) for maximum cost efficiency.",
+                metrics: ["60% API Cost Reduction", "Sub-second Routing", "Optimized Output Quality"],
+                tech: ["n8n", "Router Logic", "OpenAI API", "Gemini API"]
             },
             {
-                title: "Automated Invoice Generation Agent",
+                title: "Automated Invoice Processing Agent",
+                isClientProject: false,
+                badge: "🛠️ Architectural Showcase",
+                badgeClass: "border-teal-500/30 bg-teal-500/10 text-teal-300",
                 image: "./image/project/invoice.png",
-                challenge: "Typically, whenever a product requires an invoice, we have to update it manually and send it via email or other channels. This process is both time-consuming and inconvenient",
-                solution: "This agent triggers upon receiving order details or PDFs, generates an invoice using AI, stores the invoice data in a sheet, and sends the completed invoice via email to the customer",
-
-                metrics: ["96% time reduction", "3x content output", "45% engagement boost"],
-                tech: ["n8n", "Email", "gemini", "sheet"]
+                challenge: "Manually generating and emailing invoices after order confirmations is time-consuming and introduces clerical errors.",
+                solution: "Triggers automatically upon order completion, uses AI to extract billable line items and tax calculations, generates an invoice document, logs it to accounting sheets, and emails the PDF directly to the buyer.",
+                metrics: ["Zero Manual Invoicing", "Instant PDF Delivery", "Accounting Auto-Sync"],
+                tech: ["n8n", "Gemini API", "Google Sheets", "Email Service"]
             },
             {
-                title: "Human In The Loop",
+                title: "Human-in-the-Loop Verification Pipeline",
+                isClientProject: false,
+                badge: "🛠️ Architectural Showcase",
+                badgeClass: "border-teal-500/30 bg-teal-500/10 text-teal-300",
                 image: "./image/project/humaneinloop.png",
-                challenge: "Many tasks cannot be left fully to AI, as this can lead to errors. In such cases, a human-in-the-loop review becomes essential.",
-                solution: "Once the AI agent produces a result, it will pause for human confirmation. Depending on the user’s feedback, it will determine the next step.",
-
-                metrics: ["96% time reduction", "3x content output", "45% engagement boost"],
-                tech: ["n8n", "Social Media APIs", "telegram", "air table", "calender"]
-            },
-
-            {
-                title: "weather report agent",
-                image: "./image/project/weather_update.png",
-                challenge: "We normally don’t receive weather updates directly in our inbox, so we have to look it up in newspapers or search online.",
-                solution: "The AI agent will provide us with the latest weather report at specific intervals, based on the area where we live.",
-
-                metrics: ["96% time reduction", "3x content output", "45% engagement boost"],
-                tech: ["n8n", "Social Media APIs", "Webhook", "Email"]
-            },
-            {
-                title: "Stock agent",
-                image: "./image/project/stock.png",
-                challenge: "Whenever we want information about a company’s stock, we need to look it up on Google.",
-                solution: "Based on our query, the AI agent can provide the latest stock updates for any company.",
-
-                metrics: ["96% time reduction", "3x content output", "45% engagement boost"],
-                tech: ["n8n", "Social Media APIs", "Webhook", "Email"]
-            },
-
-
-        ];
-
-        // Reviews Data
-        const reviews = [
-            {
-                name: "Sarah Mitchell",
-                role: "Operations Director, TechFlow Inc",
-                review: "Golam transformed our chaotic workflow into a seamless automation system. The n8n solutions he built saved us countless hours and significantly reduced errors.",
-                rating: 5
-            },
-            {
-                name: "Marcus Chen",
-                role: "CEO, DataSync Solutions",
-                review: "Outstanding expertise in AI automation. The lead qualification system Golam built increased our conversion rates dramatically. Highly recommended!",
-                rating: 5
-            },
-            {
-                name: "Emily Rodriguez",
-                role: "Marketing Manager, GrowthLab",
-                review: "Professional, responsive, and incredibly skilled. Golam's automation solutions have been game-changing for our content distribution strategy.",
-                rating: 5
+                challenge: "Autonomous AI workflows cannot be left 100% unsupervised when dealing with sensitive operations, financial disbursements, or public social publishing.",
+                solution: "Integrates pause-and-resume approval gateways via Telegram or Slack. The AI prepares the proposal, sends a preview button to the human admin, and executes the final step only upon explicit verification.",
+                metrics: ["100% Safe Execution", "Telegram Interactive Approval", "Audit Trail Logging"],
+                tech: ["n8n", "Telegram Bot API", "Airtable", "Webhooks"]
             }
         ];
 
@@ -460,20 +762,17 @@
                 body.classList.remove('light');
                 sunIcon.classList.add('hidden');
                 moonIcon.classList.remove('hidden');
-                document.getElementById('navbar').style.background = 'rgba(17, 24, 39, 0.95)';
-                document.getElementById('navbar').style.borderColor = '#1f2937';
+                document.getElementById('navbar').style.background = 'rgba(12, 17, 29, 0.92)';
+                document.getElementById('navbar').style.borderColor = 'rgba(31, 41, 55, 0.8)';
             } else {
                 body.classList.add('light');
                 body.classList.remove('dark');
                 sunIcon.classList.remove('hidden');
                 moonIcon.classList.add('hidden');
-                document.getElementById('navbar').style.background = 'rgba(255, 255, 255, 0.95)';
-                document.getElementById('navbar').style.borderColor = '#e5e7eb';
+                document.getElementById('navbar').style.background = 'rgba(255, 255, 255, 0.92)';
+                document.getElementById('navbar').style.borderColor = '#e2e8f0';
             }
             updateProjectCards();
-            updateReviewCards();
-            updateContactCard();
-            updateSkillBadges();
         }
 
         themeToggle.addEventListener('click', () => {
@@ -481,7 +780,7 @@
             updateTheme();
         });
 
-        // Mobile Menu
+        // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
 
@@ -489,7 +788,7 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Smooth Scroll
+        // Smooth Scroll & Close Mobile Menu
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -501,82 +800,315 @@
             });
         });
 
-        // Render Projects
+        // Render Projects Function for Pinned Horizontal Carousel Track
         function updateProjectCards() {
-            const container = document.getElementById('projects-container');
-            container.innerHTML = projects.map(project => `
-        <div class="project-card rounded-xl p-8 border hover:border-teal-500 smooth-transition hover-scale" style="background: ${isDark ? 'rgba(31, 41, 55, 0.5)' : 'rgba(255, 255, 255, 1)'}; border-color: ${isDark ? '#374151' : '#e5e7eb'};">
-          <img src="${project.image}" alt="${project.title}" class="project-image">
-          <h3 class="text-2xl font-bold mb-4 text-teal-500">${project.title}</h3>
-          
-          <div class="grid md:grid-cols-1 gap-6 mb-6">
-            <div>
-              <h4 class="font-semibold mb-2 text-sm uppercase tracking-wider opacity-70">Challenge :</h4>
-              <p class="${isDark ? 'text-gray-300' : 'text-gray-700'}">${project.challenge}</p>
-            </div>
-            <div>
-              <h4 class="font-semibold mb-2 text-sm uppercase tracking-wider opacity-70">Solution :</h4>
-              <p class="${isDark ? 'text-gray-300' : 'text-gray-700'}">${project.solution}</p>
-            </div>
-           
-          </div>
+            const container = document.getElementById('projects-track');
+            if (!container) return;
 
-          <div class="flex flex-wrap gap-4 mb-4">
-            ${project.metrics.map(metric => `
-              <div class="bg-teal-500 bg-opacity-10 text-teal-500 px-4 py-2 rounded-lg font-semibold">
-                ${metric}
-              </div>
-            `).join('')}
-          </div>
+            const cardsHTML = projects.map((project, index) => `
+                <div class="project-card glass-card hover-tilt rounded-2xl p-3.5 sm:p-4 border hover:border-teal-500/60 flex flex-col justify-between w-[85vw] sm:w-[70vw] md:w-[46vw] lg:w-[45vw] xl:w-[44vw] max-w-[620px] shrink-0 h-full" 
+                     style="background: ${isDark ? 'rgba(17, 24, 39, 0.82)' : 'rgba(255, 255, 255, 0.94)'}; border-color: ${project.isClientProject ? 'rgba(245, 158, 11, 0.45)' : (isDark ? 'rgba(255, 255, 255, 0.08)' : '#e2e8f0')};">
+                    <div>
+                        <div class="relative overflow-hidden rounded-xl mb-2">
+                            <img src="${project.image}" alt="${project.title}" class="project-image" onerror="this.src='./image/project/Screenshot_1.png'">
+                            
+                            <!-- Project Badge (Client vs Showcase) -->
+                            <div class="absolute top-2 right-2">
+                                <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wide border backdrop-blur-md ${project.badgeClass}">
+                                    ${project.badge}
+                                </span>
+                            </div>
 
-          <div class="flex flex-wrap gap-2">
-            ${project.tech.map(tech => `
-              <span class="px-3 py-1 rounded-full text-xs font-medium" style="background: ${isDark ? '#374151' : '#f3f4f6'}; color: ${isDark ? '#d1d5db' : '#374151'};">
-                ${tech}
-              </span>
-            `).join('')}
-          </div>
-        </div>
-      `).join('');
-        }
+                            <!-- Index Pill -->
+                            <div class="absolute top-2 left-2">
+                                <span class="px-2 py-0.5 rounded-md text-[10px] font-mono font-bold bg-black/60 text-gray-300 border border-white/10 backdrop-blur-md">
+                                    #${String(index + 1).padStart(2, '0')}
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-1.5">
+                            <h3 class="text-sm sm:text-base md:text-lg font-bold ${project.isClientProject ? 'text-amber-400' : 'text-teal-400'} tracking-tight leading-snug">
+                                ${project.title}
+                            </h3>
+                        </div>
+                        
+                        <div class="space-y-1 mb-2 text-xs leading-relaxed">
+                            <div>
+                                <span class="font-mono text-[10px] uppercase tracking-wider text-gray-400 font-semibold block">Challenge:</span>
+                                <p class="${isDark ? 'text-gray-300' : 'text-gray-700'} line-clamp-2">${project.challenge}</p>
+                            </div>
+                            <div>
+                                <span class="font-mono text-[10px] uppercase tracking-wider ${project.isClientProject ? 'text-amber-400' : 'text-teal-400'} font-semibold block">
+                                    ${project.isClientProject ? 'Delivered Solution:' : 'Architectural Solution:'}
+                                </span>
+                                <p class="${isDark ? 'text-gray-300' : 'text-gray-700'} line-clamp-2">${project.solution}</p>
+                            </div>
+                        </div>
+                    </div>
 
-        // Render Reviews
-        function updateReviewCards() {
-            const container = document.getElementById('reviews-container');
-            container.innerHTML = reviews.map(review => `
-        <div class="review-card rounded-xl p-6 border hover:border-teal-500 smooth-transition" style="background: ${isDark ? 'rgba(31, 41, 55, 0.5)' : 'rgba(255, 255, 255, 1)'}; border-color: ${isDark ? '#374151' : '#e5e7eb'};">
-          <div class="flex mb-4">
-            ${'<span class="text-teal-500 text-xl">★</span>'.repeat(review.rating)}
-          </div>
-          <p class="mb-6 italic ${isDark ? 'text-gray-300' : 'text-gray-700'}">"${review.review}"</p>
-          <div>
-            <p class="font-semibold">${review.name}</p>
-            <p class="text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}">${review.role}</p>
-          </div>
-        </div>
-      `).join('');
-        }
+                    <div>
+                        <!-- Metrics Pills -->
+                        <div class="flex flex-wrap gap-1 mb-2">
+                            ${project.metrics.map(metric => `
+                                <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-mono font-semibold ${project.isClientProject ? 'bg-amber-500/10 text-amber-300 border border-amber-500/20' : 'bg-teal-500/10 text-teal-300 border border-teal-500/20'}">
+                                    ⚡ ${metric}
+                                </span>
+                            `).join('')}
+                        </div>
 
-        // Update Contact Card
-        function updateContactCard() {
-            const card = document.querySelector('.contact-card');
-            card.style.background = isDark ? 'rgba(31, 41, 55, 0.5)' : 'rgba(255, 255, 255, 1)';
-            card.style.borderColor = isDark ? '#374151' : '#e5e7eb';
+                        <!-- Tech Stack Tags -->
+                        <div class="flex flex-wrap gap-1 pt-1.5 border-t border-gray-800/80">
+                            ${project.tech.map(tech => `
+                                <span class="px-2 py-0.5 rounded text-[10px] font-mono" 
+                                      style="background: ${isDark ? 'rgba(31, 41, 55, 0.8)' : '#f1f5f9'}; color: ${isDark ? '#9ca3af' : '#475569'};">
+                                    ${tech}
+                                </span>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
 
-            document.querySelectorAll('.contact-btn').forEach(btn => {
-                btn.style.background = isDark ? '#374151' : '#f3f4f6';
+            // End Card linking to Contact - Equal height to project cards, centered content
+            const endCardHTML = `
+                <div id="custom-project-card" class="glass-card rounded-2xl p-6 sm:p-8 md:p-10 border border-dashed border-teal-500/40 flex flex-col justify-center items-center text-center w-[85vw] sm:w-[60vw] md:w-[42vw] lg:w-[36vw] max-w-[460px] shrink-0 h-full"
+                     style="background: ${isDark ? 'rgba(17, 24, 39, 0.6)' : 'rgba(255, 255, 255, 0.9)'};">
+                    <div class="p-4 sm:p-5 rounded-full bg-teal-500/10 text-teal-400 text-3xl sm:text-4xl mb-4 sm:mb-6 animate-bounce">
+                        🚀
+                    </div>
+                    <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3">Have a Custom Project?</h3>
+                    <p class="text-xs sm:text-sm text-gray-400 mb-6 sm:mb-8 max-w-xs leading-relaxed">
+                        Let's engineer an autonomous n8n workflow or Voice AI agent tailored for your business.
+                    </p>
+                    <a href="#contact" class="bg-teal-500 hover:bg-teal-600 text-white px-7 py-3.5 rounded-xl font-semibold text-sm smooth-transition shadow-lg shadow-teal-500/25 hover:scale-105 active:scale-95 inline-flex items-center gap-2">
+                        <span>Discuss Your Pipeline</span>
+                        <span>→</span>
+                    </a>
+                </div>
+                <!-- Trailing spacer so the end card centers in the middle of the screen -->
+                <div id="end-spacer" class="shrink-0 h-full" style="width: calc(50vw - 230px);"></div>
+            `;
+
+            container.innerHTML = cardsHTML + endCardHTML;
+
+            // Re-bind tilt effect
+            initTiltEffect();
+
+            // Calculate exact height dynamically so projects stay pinned until the very last card
+            updateProjectsSectionHeight();
+
+            // Re-calculate after all images have fully loaded or if already cached
+            const cardImages = container.querySelectorAll('img');
+            cardImages.forEach(img => {
+                if (img.complete) {
+                    updateProjectsSectionHeight();
+                    handleHorizontalScroll();
+                } else {
+                    img.addEventListener('load', () => {
+                        updateProjectsSectionHeight();
+                        handleHorizontalScroll();
+                    });
+                }
             });
         }
 
-        // Update Skill Badges
-        function updateSkillBadges() {
-            document.querySelectorAll('.skill-badge').forEach(badge => {
-                badge.style.background = isDark ? '#1f2937' : '#ffffff';
-                badge.style.borderColor = isDark ? '#374151' : '#e5e7eb';
+        // =========================================================================
+        // PURE VANILLA JAVASCRIPT ANIMATIONS & PINNED HORIZONTAL CAROUSEL
+        // =========================================================================
+
+        // 1. PINNED HORIZONTAL SCROLL CAROUSEL (RIGHT TO LEFT ON VERTICAL SCROLL)
+        const projectsSection = document.getElementById('projects');
+        const projectsTrack = document.getElementById('projects-track');
+        const progressBar = document.getElementById('project-progress');
+        const indexIndicator = document.getElementById('current-project-index');
+
+        // Dynamically compute generous scroll runway so the section NEVER unpins until all cards pass
+        function updateProjectsSectionHeight() {
+            if (!projectsSection || !projectsTrack) return;
+            const spacer = document.getElementById('end-spacer');
+            const customCard = document.getElementById('custom-project-card');
+            if (spacer && customCard) {
+                const cardWidth = customCard.offsetWidth || 460;
+                const neededSpacerWidth = Math.max(60, Math.round(window.innerWidth / 2 - cardWidth / 2));
+                spacer.style.width = `${neededSpacerWidth}px`;
+            }
+
+            const totalTrackWidth = projectsTrack.scrollWidth;
+            const maxTranslate = Math.max(0, totalTrackWidth - window.innerWidth);
+
+            const minHeight = (projects.length + 2) * window.innerHeight * 1.3;
+            const dynamicHeight = Math.max(minHeight, maxTranslate + window.innerHeight * 2);
+
+            projectsSection.style.height = `${Math.round(dynamicHeight)}px`;
+        }
+
+        function handleHorizontalScroll() {
+            if (!projectsSection || !projectsTrack) return;
+
+            const rect = projectsSection.getBoundingClientRect();
+            const sectionTop = rect.top;
+            const sectionHeight = projectsSection.offsetHeight - window.innerHeight;
+
+            if (sectionHeight <= 0) return;
+
+            // Before entering the section
+            if (sectionTop > 0) {
+                projectsTrack.style.transform = `translate3d(0px, 0, 0)`;
+                if (indexIndicator) indexIndicator.textContent = `Project 01 / ${String(projects.length).padStart(2, '0')}`;
+                return;
+            }
+
+            const scrolled = -sectionTop;
+            const progress = Math.max(0, Math.min(1, scrolled / sectionHeight));
+
+            const totalTrackWidth = projectsTrack.scrollWidth;
+            const maxTranslate = Math.max(0, totalTrackWidth - window.innerWidth);
+            const currentTranslate = progress * maxTranslate;
+
+            projectsTrack.style.transform = `translate3d(-${currentTranslate}px, 0, 0)`;
+
+            // Update Progress Bar
+            if (progressBar) {
+                progressBar.style.width = `${progress * 100}%`;
+            }
+
+            // Update Current Project Number Indicator based on the active card in view
+            if (indexIndicator) {
+                const cards = projectsTrack.querySelectorAll('.project-card');
+                const screenReferencePoint = window.innerWidth * 0.35;
+                let activeIdx = 0;
+                let minDistance = Infinity;
+
+                cards.forEach((card, idx) => {
+                    const cardRect = card.getBoundingClientRect();
+                    const cardCenter = cardRect.left + cardRect.width / 2;
+                    const dist = Math.abs(cardCenter - screenReferencePoint);
+                    if (dist < minDistance) {
+                        minDistance = dist;
+                        activeIdx = idx;
+                    }
+                });
+
+                indexIndicator.textContent = `Project ${String(activeIdx + 1).padStart(2, '0')} / ${String(projects.length).padStart(2, '0')}`;
+            }
+        }
+
+        window.addEventListener('scroll', handleHorizontalScroll, { passive: true });
+        window.addEventListener('resize', () => {
+            updateProjectsSectionHeight();
+            handleHorizontalScroll();
+        }, { passive: true });
+        window.addEventListener('load', () => {
+            updateProjectsSectionHeight();
+            handleHorizontalScroll();
+        });
+
+        // 2. Interactive Cursor Spotlight Follower
+        const spotlight = document.getElementById('cursor-spotlight');
+        window.addEventListener('mousemove', (e) => {
+            spotlight.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+        });
+
+        // 3. Dynamic Typewriter Effect in Hero
+        const phrases = [
+            "n8n Workflows",
+            "Voice AI Agents",
+            "CAG & RAG Systems",
+            "Autonomous Pipelines",
+            "Custom Business AI"
+        ];
+        let phraseIdx = 0;
+        let charIdx = 0;
+        let isDeleting = false;
+        const typeEl = document.getElementById('typewriter-text');
+
+        function typeLoop() {
+            const currentPhrase = phrases[phraseIdx];
+            if (isDeleting) {
+                typeEl.textContent = currentPhrase.substring(0, charIdx--);
+            } else {
+                typeEl.textContent = currentPhrase.substring(0, charIdx++);
+            }
+
+            let typeSpeed = isDeleting ? 40 : 80;
+
+            if (!isDeleting && charIdx === currentPhrase.length + 1) {
+                typeSpeed = 1800;
+                isDeleting = true;
+            } else if (isDeleting && charIdx === 0) {
+                isDeleting = false;
+                phraseIdx = (phraseIdx + 1) % phrases.length;
+                typeSpeed = 400;
+            }
+
+            setTimeout(typeLoop, typeSpeed);
+        }
+        typeLoop();
+
+        // 4. Live Simulated Pipeline Execution in Terminal
+        let activeNodeIdx = 1;
+        setInterval(() => {
+            for (let i = 1; i <= 4; i++) {
+                const node = document.getElementById(`pnode-${i}`);
+                if (node) {
+                    if (i === activeNodeIdx) {
+                        node.classList.add('node-active');
+                    } else {
+                        node.classList.remove('node-active');
+                    }
+                }
+            }
+            activeNodeIdx = activeNodeIdx >= 4 ? 1 : activeNodeIdx + 1;
+        }, 1500);
+
+        // Simulated processed counter increment
+        let counterVal = 1482;
+        const counterEl = document.getElementById('processed-counter');
+        setInterval(() => {
+            counterVal += Math.floor(Math.random() * 3) + 1;
+            if (counterEl) {
+                counterEl.textContent = counterVal.toLocaleString();
+            }
+        }, 3200);
+
+        // 5. 3D Tilt Effect on Cards (Pure JS)
+        function initTiltEffect() {
+            const tiltCards = document.querySelectorAll('.hover-tilt');
+            tiltCards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = ((y - centerY) / centerY) * -6;
+                    const rotateY = ((x - centerX) / centerX) * 6;
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.015, 1.015, 1.015)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+                });
             });
         }
 
-        // 3D Network Animation
+        // 6. Scroll Reveal with IntersectionObserver
+        function initScrollReveal() {
+            const revealElements = document.querySelectorAll('.reveal-on-scroll:not(.is-revealed)');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-revealed');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            revealElements.forEach(el => observer.observe(el));
+        }
+
+        // 7. Interactive 3D Canvas Particle Network
         const canvas = document.getElementById('network-canvas');
         const ctx = canvas.getContext('2d');
         let scrollY = 0;
@@ -592,23 +1124,23 @@
         });
 
         const nodes = [];
-        const nodeCount = 40;
+        const nodeCount = 38;
 
         for (let i = 0; i < nodeCount; i++) {
             nodes.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
-                vx: (Math.random() - 0.5) * 0.3,
-                vy: (Math.random() - 0.5) * 0.3,
-                radius: Math.random() * 3 + 2
+                vx: (Math.random() - 0.5) * 0.25,
+                vy: (Math.random() - 0.5) * 0.25,
+                radius: Math.random() * 2.5 + 1.5
             });
         }
 
         function animate() {
-            ctx.fillStyle = isDark ? 'rgba(17, 24, 39, 0.1)' : 'rgba(249, 250, 251, 0.1)';
+            ctx.fillStyle = isDark ? 'rgba(12, 17, 29, 0.15)' : 'rgba(248, 250, 252, 0.15)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            const cameraOffset = scrollY * 0.05;
+            const cameraOffset = scrollY * 0.04;
 
             nodes.forEach((node, i) => {
                 node.x += node.vx;
@@ -619,7 +1151,7 @@
 
                 ctx.beginPath();
                 ctx.arc(node.x, node.y - cameraOffset, node.radius, 0, Math.PI * 2);
-                ctx.fillStyle = isDark ? 'rgba(20, 184, 166, 0.6)' : 'rgba(20, 184, 166, 0.5)';
+                ctx.fillStyle = isDark ? 'rgba(45, 212, 191, 0.5)' : 'rgba(13, 148, 136, 0.4)';
                 ctx.fill();
 
                 nodes.slice(i + 1).forEach(other => {
@@ -627,13 +1159,13 @@
                     const dy = other.y - node.y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
 
-                    if (dist < 150) {
+                    if (dist < 140) {
                         ctx.beginPath();
                         ctx.moveTo(node.x, node.y - cameraOffset);
                         ctx.lineTo(other.x, other.y - cameraOffset);
                         ctx.strokeStyle = isDark
-                            ? `rgba(20, 184, 166, ${0.2 * (1 - dist / 150)})`
-                            : `rgba(20, 184, 166, ${0.15 * (1 - dist / 150)})`;
+                            ? `rgba(45, 212, 191, ${0.18 * (1 - dist / 140)})`
+                            : `rgba(13, 148, 136, ${0.12 * (1 - dist / 140)})`;
                         ctx.lineWidth = 1;
                         ctx.stroke();
                     }
@@ -643,11 +1175,12 @@
             requestAnimationFrame(animate);
         }
 
-        // Initialize
+        // Initialize Everything
         updateTheme();
-        updateProjectCards();
-        updateReviewCards();
+        initScrollReveal();
         animate();
+        updateProjectsSectionHeight();
+        handleHorizontalScroll();
     </script>
 </body>
 
